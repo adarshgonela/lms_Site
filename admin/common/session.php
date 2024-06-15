@@ -1,0 +1,26 @@
+<?php 
+
+    session_start();
+    $return = "login";
+    if(!isset($_SESSION['email']) || !isset($_SESSION['role'])) {
+        // If user is not logged in, redirect to login page
+        header("Location: $return.php?error=Please login to View Page");
+        exit();
+    }
+    include "../db.php";
+    include_once('redirect/repository.php');
+
+    $usersRepo = new Repository('users','email',$conn);
+    $profileRepo = new Repository('profile','email',$conn);
+    $coursesRepo = new Repository('courses','id',$conn);
+    $collegesRepo = new Repository('colleges','id',$conn);
+    $documentsRepo = new Repository('users','id',$conn);
+    $applicationsRepo = new Repository('applications','id',$conn);
+    $paymentsRepo = new Repository('payments','id',$conn);
+   
+
+    $email = $_SESSION['email'];
+    $user = $usersRepo->fetch($email);
+
+     
+?>

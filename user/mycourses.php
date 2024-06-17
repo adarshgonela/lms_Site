@@ -40,7 +40,7 @@
 				const btnToActive = document.querySelector(`[data-bs-theme-value="${theme}"]`)
 				const svgOfActiveBtn = btnToActive.querySelector('.mode-switch use').getAttribute('href')
 
-				document.querySelectorAll('[data-bs-theme-value]').forEach(element => {
+				document.querySelectorAll('[data-bs-theme-value]').forEach(elements => {
 					element.classList.remove('active')
 				})
 
@@ -106,7 +106,7 @@
 				<div class="card bg-transparent border rounded-3">
 					<!-- Card header START -->
 					<div class="card-header bg-transparent border-bottom">
-						<h3 class="mb-0">My Applications</h3>
+						<h3 class="mb-0">My Courses</h3>
 					</div>
 					<!-- Card header END -->
 
@@ -151,24 +151,27 @@
 								<!-- Table head -->
 								<thead>
 									<tr>
-										<th scope="col" class="border-0 rounded-start">College</th>
-										<th scope="col" class="border-0">Application Id</th>
-										<th scope="col" class="border-0">Fees</th>
-										<th scope="col" class="border-0 rounded-end">Status</th>
+										<th scope="col" class="border-0 rounded-start">User Id</th>
+										<th scope="col" class="border-0">Instructor Name</th>
+										<th scope="col" class="border-0">Duration</th>
+										<th scope="col" class="border-0">Total lectures</th>
+										<th scope="col" class="border-0 rounded-end">Completed lectures</th>
 									</tr>
 								</thead>
+								
 
 								<!-- Table body START -->
 								<tbody>
 									<!-- Table item -->
 									<?php
 
-											$applications = $applicationsRepo->fetchBy("`email` = '$email'");
-											foreach($applications as $application){
-												$college = $application['college'];
-												$id = "A0".$application['id'];
-												$fees =$application['fees'];
-												$status =$application['status'];
+											$mycourses = $mycoursesRepo->fetchBy();
+											foreach($mycourses as $mycourse){
+												$userid = $mycourse['id'];
+												$instructorname = $mycourse['name'];
+												$cduration =$mycourse['duration'];
+												$totallecture =$mycourse['totallectures'];
+												$completedlectures = $mycourse['completedlecture'];
 
 									?>
 									<tr>
@@ -176,15 +179,15 @@
 										<td>
 											<div class="d-flex align-items-center">
 												<!-- Image -->
-												<div class="w-100px">
-													<img src="assets/images/courses/4by3/08.jpg" class="rounded" alt="">
-												</div>
+												<!-- <div class="w-100px">
+													<img src="assets/images/courses/4by3/08.jpg" class="rounded" alt=""> 
+												</div>-->
 												<div class="mb-0 ms-2">
 													<!-- Title -->
-													<h6><a href="#"><?php echo $college; ?></a></h6>
+													 <h6><a href="#"><?php echo $userid; ?></a></h6>
 													<!-- Info -->
 													<div class="overflow-hidden">
-														<h6 class="mb-0 text-end">85%</h6>
+														<!-- <h6 class="mb-0 text-end">85%</h6> -->
 														<div class="progress progress-sm bg-primary bg-opacity-10">
 															<div class="progress-bar bg-primary aos" role="progressbar" data-aos="slide-right" data-aos-delay="200" data-aos-duration="1000" data-aos-easing="ease-in-out" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
 															</div>
@@ -193,16 +196,24 @@
 												</div>
 											</div>
 										</td>
+                                        
 
 										<!-- Table data -->
-										<td><?php echo $id; ?></td>
+										<!-- <td><?php echo $userid; ?></td> -->
 
 										<!-- Table data -->
-										<td><?php echo $fees; ?></td>
+										<td><?php echo $instructorname; ?></td>
+
+										<!-- Table data -->
+										<td><?php echo $cduration; ?></td>
 
 										<!-- Table data -->
 										<td>
-											<div class="btn btn-sm btn-primary-soft me-1 mb-1 mb-md-0"><?php echo $status ?></div>
+											<?php echo $totallecture;  ?>
+										</td>
+
+										<td>
+											<?php echo $completedlectures;  ?>
 										</td>
 									</tr>
 

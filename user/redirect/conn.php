@@ -23,7 +23,7 @@ $profileRepo = new Repository('profile','email',$conn);
 $coursesRepo = new Repository('courses','id',$conn);
 $collegesRepo = new Repository('colleges','id',$conn);
 $documentsRepo = new Repository('users','id',$conn);
-$applicationsRepo = new Repository('applications','id',$conn);
+$mycoursesRepo = new Repository('coursetable','id',$conn);
 
 
 

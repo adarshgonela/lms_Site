@@ -115,7 +115,7 @@
 									
 									<h5 class="purecounter mb-0 fw-bold" data-purecounter-start="0" data-purecounter-end="<?php echo $appliedColleges; ?>"	data-purecounter-delay="100">0</h5>
 								</div>
-								<p class="mb-0 h6 fw-light">Total Applications</p>
+								<p class="mb-0 h6 fw-light">Total Courses</p>
 							</div>
 						</div>
 					</div>
@@ -127,7 +127,7 @@
 								<div class="d-flex">
 									<h5 class="purecounter mb-0 fw-bold" data-purecounter-start="0" data-purecounter-end="<?php echo $availablecolleges; ?>"	data-purecounter-delay="200">0</h5>
 								</div>
-								<p class="mb-0 h6 fw-light">Available Colleges</p>
+								<p class="mb-0 h6 fw-light">Available Courses</p>
 							</div>
 						</div>
 
@@ -140,7 +140,7 @@
 								<div class="d-flex">
 									<h5 class="purecounter mb-0 fw-bold" data-purecounter-start="0" data-purecounter-end="<?php echo $acceptedcolleges; ?>" data-purecounter-delay="300">0</h5>
 								</div>
-								<p class="mb-0 h6 fw-light">Accepted Colleges</p>
+								<p class="mb-0 h6 fw-light">Entrolled Courses</p>
 							</div>
 						</div>
 					</div>
@@ -150,7 +150,7 @@
 				<div class="card bg-transparent border rounded-3">
 					<!-- Card header START -->
 					<div class="card-header bg-transparent border-bottom">
-						<h3 class="mb-0">My Applications</h3>
+						<h3 class="mb-0">My Courses</h3>
 					</div>
 					<!-- Card header END -->
 

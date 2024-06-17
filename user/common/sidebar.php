@@ -29,13 +29,13 @@ Page Banner START -->
 							<div>
 								<h1 class="my-1 fs-4"><?php echo $user['name']; ?></h1>
 								<ul class="list-inline mb-0">
-									<li class="list-inline-item me-3 mb-1 mb-sm-0">
+									<!-- <li class="list-inline-item me-3 mb-1 mb-sm-0">
 										<span class="h6">255</span>
 										<span class="text-body fw-light">points</span>
-									</li>
+									</li> -->
 									<li class="list-inline-item me-3 mb-1 mb-sm-0">
 										<span class="h6"><?php echo $appliedColleges; ?></span>
-										<span class="text-body fw-light"> Applications</span>
+										<span class="text-body fw-light"> Courses</span>
 									</li>
 									<li class="list-inline-item me-3 mb-1 mb-sm-0">
 										<span class="h6"><?php echo  $totalcourses; ?></span>
@@ -90,7 +90,7 @@ Page content START -->
 							<div class="list-group list-group-dark list-group-borderless collapse-list">
 								<a class="list-group-item <?php echo $current_file=='dashboard'? 'active' :'' ;?>" href="user/dashboard.php"><i class="bi bi-ui-checks-grid fa-fw me-2"></i>Dashboard</a>
 								
-								<a class="list-group-item <?php echo $current_file=='applications'? 'active' :'' ;?>" href="user/applications.php"><i class="bi bi-files fa-fw me-2"></i>Applications</a>
+								<a class="list-group-item <?php echo $current_file=='applications'? 'active' :'' ;?>" href="user/applications.php"><i class="bi bi-files fa-fw me-2"></i>My Courses</a>
 								<a class="list-group-item <?php echo $current_file=='courses'? 'active' :'' ;?>" href="user/courses.php"><i class="bi bi-cart-check fa-fw me-2"></i>Courses</a>
 								<a class="list-group-item <?php echo $current_file=='colleges'? 'active' :'' ;?>" href="user/colleges.php"><i class="bi bi-card-checklist fa-fw me-2"></i>Colleges</a>
 								<a class="list-group-item <?php echo $current_file=='payments'? 'active' :'' ;?>" href="user/payments.php"><i class="bi bi-wallet2 fa-fw me-2"></i>Payments</a>

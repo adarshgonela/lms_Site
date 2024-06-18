@@ -2,14 +2,20 @@
 <!-- =======================
 Page Banner START -->
 <?php
+<<<<<<< HEAD
 	$appliedcourses = (int)$mycoursesRepo->aggregate("count","course","`email` = '$email'");
 	$availablecourses = (int)$collegesRepo->aggregate("count","id","");
 	$acceptedcourses = (int)$mycoursesRepo->aggregate("count","course","`email` = '$email' AND `status`= 'approved'");
+=======
+	$appliedColleges = (int)$applicationsRepo->aggregate("count","id","`sid` = '$email'");
+	$availablecolleges = (int)$collegesRepo->aggregate("count","id","");
+	$acceptedcolleges = (int)$applicationsRepo->aggregate("count","id","`sid` = '$email' AND `status`= 'approved'");
+>>>>>>> 2b9f47f13d88c7e08446cd3eeae8c39eb7002ccb
 	$totalcourses = (int)$coursesRepo->aggregate("count","id","");
 ?>
 <section class="pt-0">
 	<div class="container-fluid px-0">
-		<div class="card bg-blue h-100px h-md-200px rounded-0" style="background:url(assets/images/pattern/04.png) no-repeat center center; background-size:cover;">
+		<div class="card bg-blue h-100px h-md-70px rounded-0" style="background:url(assets/images/pattern/04.png) no-repeat center center; background-size:cover;">
 		</div>
 	</div>
 	<div class="container mt-n4">
@@ -19,16 +25,26 @@ Page Banner START -->
 					<div class="row d-sm-flex justify-sm-content-between mt-2 mt-md-0">
 						<!-- Avatar -->
 						<div class="col-auto">
-							<div class="avatar avatar-xxl position-relative mt-n3">
-								<img class="avatar-img rounded-circle border border-white border-3 shadow" src="assets/images/avatar/09.jpg" alt="">
-								<span class="badge text-bg-success rounded-pill position-absolute top-50 start-100 translate-middle mt-4 mt-md-5 ms-n3 px-md-3">Pro</span>
-							</div>
+							<a class="avatar avatar-xxl position-relative mt-n3" href="user/profile.php">
+								<img class="avatar-img rounded-circle border border-white border-3 shadow" loading="lazy" src="
+								<?php
+								if($profile['image'] && $profile['image']!=""){
+								    echo "data:image/jpeg;base64,".base64_encode($profile['image']);
+								}
+								else{
+								    echo "assets/images/avatar/default.png";
+								}
+								?>
+								" alt="">
+								<span class="badge text-bg-success rounded-pill position-absolute top-50 start-100 translate-middle mt-4 mt-md-5 ms-n3 px-md-3"><i class="bi bi-pencil-square"></i></span>
+							</a>
 						</div>
 						<!-- Profile info -->
 						<div class="col d-sm-flex justify-content-between align-items-center">
 							<div>
 								<h1 class="my-1 fs-4"><?php echo $user['name']; ?></h1>
 								<ul class="list-inline mb-0">
+<<<<<<< HEAD
 									<!-- <li class="list-inline-item me-3 mb-1 mb-sm-0">
 										<span class="h6">255</span>
 										<span class="text-body fw-light">points</span>
@@ -36,11 +52,17 @@ Page Banner START -->
 									 <li class="list-inline-item me-3 mb-1 mb-sm-0">
 										<span class="h6"><?php echo $appliedcourses; ?></span>
 										<span class="text-body fw-light"> Courses</span>
-									</li>
+=======
+									
 									<li class="list-inline-item me-3 mb-1 mb-sm-0">
-										<span class="h6"><?php echo  $totalcourses; ?></span>
-										<span class="text-body fw-light">Available Courses</span>
+										<span class="h6"><?php echo $appliedColleges; ?></span>
+										<span class="text-body fw-light"> Applications</span>
+>>>>>>> 2b9f47f13d88c7e08446cd3eeae8c39eb7002ccb
 									</li>
+									<!--<li class="list-inline-item me-3 mb-1 mb-sm-0">-->
+									<!--	<span class="h6"><?php echo  $totalcourses; ?></span>-->
+									<!--	<span class="text-body fw-light">Available Courses</span>-->
+									<!--</li>-->
 								</ul>
 							</div>
 							<!-- Button -->
@@ -90,9 +112,16 @@ Page content START -->
 							<div class="list-group list-group-dark list-group-borderless collapse-list">
 								<a class="list-group-item <?php echo $current_file=='dashboard'? 'active' :'' ;?>" href="user/dashboard.php"><i class="bi bi-ui-checks-grid fa-fw me-2"></i>Dashboard</a>
 								
+<<<<<<< HEAD
 								<a class="list-group-item <?php echo $current_file=='mycourses'? 'active' :'' ;?>" href="user/mycourses.php"><i class="bi bi-files fa-fw me-2"></i>My Courses</a>
+=======
+								<a class="list-group-item <?php echo $current_file=='applications'? 'active' :'' ;?>" href="user/applications.php"><i class="bi bi-files fa-fw me-2"></i>Applications</a>
+								
+								<a class="list-group-item <?php echo $current_file=='colleges'? 'active' :'' ;?>" href="user/colleges.php"><i class="fas fa-university fa-fw me-2"></i>Universities</a>
+								
+>>>>>>> 2b9f47f13d88c7e08446cd3eeae8c39eb7002ccb
 								<a class="list-group-item <?php echo $current_file=='courses'? 'active' :'' ;?>" href="user/courses.php"><i class="bi bi-cart-check fa-fw me-2"></i>Courses</a>
-								<a class="list-group-item <?php echo $current_file=='colleges'? 'active' :'' ;?>" href="user/colleges.php"><i class="bi bi-card-checklist fa-fw me-2"></i>Colleges</a>
+								
 								<a class="list-group-item <?php echo $current_file=='payments'? 'active' :'' ;?>" href="user/payments.php"><i class="bi bi-wallet2 fa-fw me-2"></i>Payments</a>
 								<a class="list-group-item <?php echo $current_file=='documents'? 'active' :'' ;?>" href="user/documents.php"><i class="bi bi-file-earmark-text-fill me-2"></i>Documents</a>
 								<!-- <a class="list-group-item" href="student-quiz.html"><i class="bi bi-question-diamond fa-fw me-2"></i>Quiz</a> -->

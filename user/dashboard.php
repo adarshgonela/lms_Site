@@ -2,13 +2,13 @@
 <html lang="en">
 
 <head>
-	<title>Eduport - LMS, Education and Course Theme</title>
+	<?php include_once('common/title.php'); ?>
 
 	<!-- Meta Tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="author" content="Webestica.com">
-	<meta name="description" content="Eduport- LMS, Education and Course Theme">
+	<meta name="author" content="">
+	<meta name="description" content="">
 	<base href="../">
 
 	<!-- Dark mode -->
@@ -153,6 +153,7 @@
 						<h3 class="mb-0">My Courses</h3>
 					</div>
 					<!-- Card header END -->
+<<<<<<< HEAD
 
 					<!-- Card body START -->
 					<div class="card-body">
@@ -278,6 +279,12 @@
 						<!-- Pagination END -->
 					</div>
 					<!-- Card body START -->
+=======
+                    <?php 
+                    include "common/applications.php";
+                    include "common/colleges.php";
+                    ?>
+>>>>>>> 2b9f47f13d88c7e08446cd3eeae8c39eb7002ccb
 				</div>
 			<!-- Main content END -->
 			</div><!-- Row END -->
@@ -292,34 +299,7 @@ Page content END -->
 
 <!-- =======================
 Footer START -->
-<footer class="bg-dark p-3">
-	<div class="container">
-		<div class="row align-items-center">
-			<!-- Widget -->
-			<div class="col-md-4 text-center text-md-start mb-3 mb-md-0">
-				<!-- Logo START -->
-				<a href="index-2.html"> <img class="h-20px" src="assets/images/logo-light.svg" alt="logo"> </a>
-			</div>
-			
-			<!-- Widget -->
-			<div class="col-md-4 mb-3 mb-md-0">
-				<div class="text-center text-white text-primary-hover">
-					Copyrights ©2024 Eduport. Build by <a href="https://www.webestica.com/" target="_blank" class="text-white">Webestica</a>.
-				</div>
-			</div>
-			<!-- Widget -->
-			<div class="col-md-4">
-				<!-- Rating -->
-				<ul class="list-inline mb-0 text-center text-md-end">
-					<li class="list-inline-item ms-2"><a href="#"><i class="text-white fab fa-facebook"></i></a></li>
-					<li class="list-inline-item ms-2"><a href="#"><i class="text-white fab fa-instagram"></i></a></li>
-					<li class="list-inline-item ms-2"><a href="#"><i class="text-white fab fa-linkedin-in"></i></a></li>
-					<li class="list-inline-item ms-2"><a href="#"><i class="text-white fab fa-twitter"></i></a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
-</footer>
+<?php include_once('common/footer.php'); ?>
 <!-- =======================
 Footer END -->
 

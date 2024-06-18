@@ -2,8 +2,7 @@
 <html lang="en">
 
 <head>
-	<title>Eduport - LMS, Education and Course Theme</title>
-
+		<?php include_once('common/title.php'); ?>
 	<!-- Meta Tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -113,23 +112,31 @@
 					<!-- Card body START -->
 					<div class="card-body">
 						<!-- Form -->
-						<form action="user/redirect/profile/update.php" class="row g-4">
+						<form action="user/redirect/profile/update.php" method="post" enctype="multipart/form-data" class="row g-4">
 
 							<!-- Profile picture -->
-							<div class="col-12 justify-content-center align-items-center">
-								<label class="form-label">Profile picture</label>
-								<div class="d-flex align-items-center">
-									<label class="position-relative me-4" for="uploadfile-1" title="Replace this pic">
+							<!--<div class="col-12 justify-content-center align-items-center">-->
+							<!--	<label class="form-label">Profile picture</label>-->
+							<!--	<div class="d-flex align-items-center">-->
+							<!--		<label class="position-relative me-4" for="uploadfile-1" title="Replace this pic">-->
 										<!-- Avatar place holder -->
-										<span class="avatar avatar-xl">
-											<img id="uploadfile-1-preview" class="avatar-img rounded-circle border border-white border-3 shadow" src="assets/images/avatar/07.jpg" alt="">
-										</span>
+							<!--			<span class="avatar avatar-xl">-->
+							<!--				<img id="uploadfile-1-preview" class="avatar-img rounded-circle border border-white border-3 shadow" src="assets/images/avatar/07.jpg" alt="">-->
+							<!--			</span>-->
 										<!-- Remove btn -->
-										<button type="button" class="uploadremove"><i class="bi bi-x text-white"></i></button>
-									</label>
+							<!--			<button type="button" class="uploadremove"><i class="bi bi-x text-white"></i></button>-->
+							<!--		</label>-->
 									<!-- Upload button -->
-									<label class="btn btn-primary-soft mb-0" for="uploadfile-1">Change</label>
-									<input id="uploadfile-1" class="form-control d-none" type="file">
+							<!--		<label class="btn btn-primary-soft mb-0" for="uploadfile-1">Change</label>-->
+							<!--		<input id="uploadfile-1" class="form-control d-none" type="file">-->
+							<!--	</div>-->
+							<!--</div>-->
+							
+								<!-- Full name -->
+							<div class="col-12">
+								<label class="form-label">Profile avatar</label>
+								<div class="input-group">
+									<input type="file" class="form-control" name="image" placeholder="Full name">
 								</div>
 							</div>
 

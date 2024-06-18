@@ -4,15 +4,15 @@ Page Banner START -->
 <?php
 	
 	$students = (int)$usersRepo->aggregate("count","counsler","`counsler`='$email'");
-	$totalAppications = (int)$applicationsRepo->aggregate("count","id","`counsler`='$email'");
-	$approvedApplications = (int)$applicationsRepo->aggregate("count","id","`counsler`='$email' AND `status`='approved'");
+	$totalAppications = (int)$applicationsRepo->aggregate("count","id","`cid`='$email'");
+	$approvedApplications = (int)$applicationsRepo->aggregate("count","id","`cid`='$email' AND `status`='approved'");
 	$totalColleges = (int)$collegesRepo->aggregate("count","id");
 
 
 ?>
 <section class="pt-0">
 	<div class="container-fluid px-0">
-		<div class="card bg-blue h-100px h-md-200px rounded-0" style="background:url(assets/images/pattern/04.png) no-repeat center center; background-size:cover;">
+		<div class="card bg-blue h-100px h-md-40px rounded-0" style="background:url(assets/images/pattern/04.png) no-repeat center center; background-size:cover;">
 		</div>
 	</div>
 	<div class="container mt-n4">
@@ -22,10 +22,19 @@ Page Banner START -->
 					<div class="row d-sm-flex justify-sm-content-between mt-2 mt-md-0">
 						<!-- Avatar -->
 						<div class="col-auto">
-							<div class="avatar avatar-xxl position-relative mt-n3">
-								<img class="avatar-img rounded-circle border border-white border-3 shadow" src="assets/images/avatar/09.jpg" alt="">
-								<span class="badge text-bg-success rounded-pill position-absolute top-50 start-100 translate-middle mt-4 mt-md-5 ms-n3 px-md-3">Pro</span>
-							</div>
+							<a class="avatar avatar-xxl position-relative mt-n3" href="counsler/profile.php">
+								<img class="avatar-img rounded-circle border border-white border-3 shadow" loading="lazy" src="
+								<?php
+								if($profile['image'] && $profile['image']!=""){
+								    echo "data:image/jpeg;base64,".base64_encode($profile['image']);
+								}
+								else{
+								    echo "assets/images/avatar/default.png";
+								}
+								?>
+								" alt="">
+								<span class="badge text-bg-success rounded-pill position-absolute top-50 start-100 translate-middle mt-4 mt-md-5 ms-n3 px-md-3"><i class="bi bi-pencil-square"></i></span>
+							</a>
 						</div>
 						<!-- Profile info -->
 						<div class="col d-sm-flex justify-content-between align-items-center">
@@ -100,8 +109,8 @@ Page content START -->
 								<a class="list-group-item <?php echo $current_file=='dashboard'? 'active' :'' ;?>" href="counsler/dashboard.php"><i class="bi bi-ui-checks-grid fa-fw me-2"></i>Dashboard</a>
 								<a class="list-group-item <?php echo $current_file=='students'? 'active' :'' ;?>" href="counsler/students.php"><i class="bi bi-people fa-fw me-2"></i>Students</a>
 								<a class="list-group-item <?php echo $current_file=='applications'? 'active' :'' ;?>" href="counsler/applications.php"><i class="bi bi-files fa-fw me-2"></i>Applications</a>
-								<a class="list-group-item <?php echo $current_file=='courses'? 'active' :'' ;?>" href="counsler/courses.php"><i class="bi bi-cart-check fa-fw me-2"></i>Courses</a>
-								<a class="list-group-item <?php echo $current_file=='colleges'? 'active' :'' ;?>" href="counsler/colleges.php"><i class="bi bi-card-checklist fa-fw me-2"></i>Colleges</a>
+								<!--<a class="list-group-item" href="counsler/courses.php"><i class="bi bi-cart-check fa-fw me-2"></i>Courses</a>-->
+								<a class="list-group-item <?php echo $current_file=='colleges'? 'active' :'' ;?>" href="counsler/colleges.php"><i class="fas fa-university fa-fw me-2"></i>Universities</a>
 								<a class="list-group-item <?php echo $current_file=='payments'? 'active' :'' ;?>" href="counsler/payments.php"><i class="bi bi-wallet2 fa-fw me-2"></i>Payments</a>
 								<a class="list-group-item <?php echo $current_file=='documents'? 'active' :'' ;?>" href="counsler/documents.php"><i class="bi bi-file-earmark-text-fill me-2"></i>Documents</a>
 								<!-- <a class="list-group-item" href="student-quiz.html"><i class="bi bi-question-diamond fa-fw me-2"></i>Quiz</a> -->
@@ -109,6 +118,7 @@ Page content START -->
 								<!-- <a class="list-group-item" href="user/profile.php"><i class="bi bi-pencil-square fa-fw me-2"></i>Edit Profile</a> -->
 								<!-- <a class="list-group-item" href="instructor-setting.html"><i class="bi bi-gear fa-fw me-2"></i>Settings</a> -->
 								<!-- <a class="list-group-item" href="instructor-delete-account.html"><i class="bi bi-trash fa-fw me-2"></i>Delete Profile</a> -->
+								<a class="list-group-item <?php echo $current_file=='profile'? 'active' :'' ;?>" href="counsler/profile.php"><i class="bi bi-pencil-square fa-fw me-2"></i>Profile</a>
 								<a class="list-group-item text-danger bg-danger-soft-hover" href="counsler/redirect/auth/logout.php"><i class="fas fa-sign-out-alt fa-fw me-2"></i>Sign Out</a>
 								<!-- Collapse menu -->
 								<!-- <a class="list-group-item" data-bs-toggle="collapse" href="#collapseauthentication" role="button" aria-expanded="false" aria-controls="collapseauthentication">

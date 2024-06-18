@@ -183,7 +183,7 @@
 		<div class="row g-4 mb-4">
 
 			<!-- Chart START -->
-			<div class="col-xxl-8">
+			<div class="col-xxl-12">
 				<div class="card shadow h-100">
 
 					<!-- Card header -->
@@ -207,7 +207,7 @@
 		<div class="row g-4">
 
 			<!-- Top instructors START -->
-			<div class="col-lg-6 col-xxl-4">
+			<div class="col-lg-6 col-xxl-6">
 				<div class="card shadow h-100">
 
 					<!-- Card header -->
@@ -343,7 +343,7 @@
 			</div>
 			<!-- Top instructors END -->
 			<!-- Traffic sources START -->
-			<div class="col-lg-6 col-xxl-4">
+			<div class="col-lg-6 col-xxl-6">
 				<div class="card shadow h-100">
 
 					<!-- Card header -->

@@ -91,8 +91,9 @@ class Repository {
     /**
      * Update a record in the database.
      */
-    public function update(array $data, $fields, $filter=[]): ?array {
-        if (!$this->fetch($data[$this->pk])) {
+    public function update(array $data, $fields = [], $filter=[]): ?array {
+        $fields = count($fields) == 0 ? array_keys($data) : $fields;
+        if (isset($data[$this->pk]) && !$this->fetch($data[$this->pk])) {
             return null;
         }
 

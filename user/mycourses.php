@@ -114,7 +114,6 @@
 
 					<?php include "common/applications.php"; ?>
 					
-<<<<<<< HEAD:user/mycourses.php
 					<!-- Card header END -->
 
 					<!-- Card body START -->
@@ -154,11 +153,12 @@
 								<!-- Table head -->
 								<thead>
 									<tr>
-										<th scope="col" class="border-0 rounded-start">User Id</th>
-										<th scope="col" class="border-0">Instructor Name</th>
+									    <th scope="col" class="border-0 rounded-start">Course Name</th>
+										<th scope="col" class="border-0">Tuitor Name</th>
 										<th scope="col" class="border-0">Duration</th>
-										<th scope="col" class="border-0">Total lectures</th>
-										<th scope="col" class="border-0 rounded-end">Completed lectures</th>
+										<th scope="col" class="border-0">Total Lectures</th>
+										<th scope="col" class="border-0">Completed Lectures</th>
+										<th scope="col" class="border-0 rounded-end">Level</th>
 									</tr>
 								</thead>
 								
@@ -168,13 +168,14 @@
 									<!-- Table item -->
 									<?php
 
-											$mycourses = $mycoursesRepo->fetchBy();
-											foreach($mycourses as $mycourse){
-												$userid = $mycourse['id'];
-												$instructorname = $mycourse['name'];
-												$cduration =$mycourse['duration'];
-												$totallecture =$mycourse['totallectures'];
-												$completedlectures = $mycourse['completedlecture'];
+										$mycourses = $mycoursesRepo->fetchBy();
+										foreach($mycourses as $mycourse){
+											$coursename = $mycourse['name'];
+											$tuitorname = $mycourse['tname'];
+											$duration = $mycourse['duration'];
+											$totallecture =$mycourse['totallectures'];
+											$completedlecture =$mycourse['completedlectures'];
+											$levels = $mycourse['level'];
 
 									?>
 									<tr>
@@ -187,37 +188,38 @@
 												</div>-->
 												<div class="mb-0 ms-2">
 													<!-- Title -->
-													 <h6><a href="#"><?php echo $userid; ?></a></h6>
+													 <h6><a href="#"><?php echo $coursename; ?></a></h6>
 													<!-- Info -->
 													<div class="overflow-hidden">
 														<!-- <h6 class="mb-0 text-end">85%</h6> -->
-														<div class="progress progress-sm bg-primary bg-opacity-10">
+														<!-- <div class="progress progress-sm bg-primary bg-opacity-10">
 															<div class="progress-bar bg-primary aos" role="progressbar" data-aos="slide-right" data-aos-delay="200" data-aos-duration="1000" data-aos-easing="ease-in-out" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
 															</div>
-														</div>
+														</div> -->
 													</div>
 												</div>
 											</div>
 										</td>
                                         
 
-										<!-- Table data -->
-										<!-- <td><?php echo $userid; ?></td> -->
+									
+										<td><h6><?php echo $tuitorname; ?></h6></td>
 
 										<!-- Table data -->
-										<td><?php echo $instructorname; ?></td>
+										<td><?php echo $duration; ?></td>
 
 										<!-- Table data -->
-										<td><?php echo $cduration; ?></td>
+										<td><?php echo $totallecture; ?></td>
 
 										<!-- Table data -->
 										<td>
-											<?php echo $totallecture;  ?>
+											<?php echo $completedlecture;  ?>
 										</td>
 
 										<td>
-											<?php echo $completedlectures;  ?>
+											<?php echo $levels;  ?>
 										</td>
+
 									</tr>
 
 									<?php
@@ -250,9 +252,6 @@
 						<!-- Pagination END -->
 					</div>
 					<!-- Card body START -->
-=======
-					<!-- Card body END -->
->>>>>>> 2b9f47f13d88c7e08446cd3eeae8c39eb7002ccb:user/applications.php
 				</div>
 			<!-- Main content END -->
 			</div><!-- Row END -->

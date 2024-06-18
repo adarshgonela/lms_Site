@@ -203,7 +203,7 @@
 									<!-- Table item -->
 									<?php
 
-											$applications = $applicationsRepo->fetchBy("`email` = '$email'");
+											$applications = $applicationsRepo->fetchBy();
 											foreach($applications as $application){
 												$college = $application['college'];
 												$id = "A0".$application['id'];

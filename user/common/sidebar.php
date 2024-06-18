@@ -33,7 +33,7 @@ Page Banner START -->
 										<span class="h6">255</span>
 										<span class="text-body fw-light">points</span>
 									</li>
-									<!-- <li class="list-inline-item me-3 mb-1 mb-sm-0">
+									 <li class="list-inline-item me-3 mb-1 mb-sm-0">
 										<span class="h6"><?php echo $appliedColleges; ?></span>
 										<span class="text-body fw-light"> Courses</span>
 									</li>

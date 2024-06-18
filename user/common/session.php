@@ -26,6 +26,4 @@
     $user = $usersRepo->fetch($email);
     $profile = $profileRepo->fetch($email);
 
-
-     
 ?>

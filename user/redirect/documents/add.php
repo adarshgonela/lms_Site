@@ -2,7 +2,7 @@
     session_start();
     include_once('../conn.php');
 
-    $returnUrl = "../../user/viewdocuments";
+    $returnUrl = "../../documents";
     if(!isset($_REQUEST['type'])){
         header("Location:$returnUrl.php?status=kyc updated");
         exit();
@@ -32,24 +32,22 @@
     
     if($document){
     
-    $stmt = $conn->prepare("INSERT into `documents` (`email`,`type`,`name`,`document`) VALUES (?,?,?,?)");
-    $stmt->bind_param("ssss",$email,$type,$name,$document);
+    $stmt = $conn->prepare("INSERT into `documents` (`email`,`type`,`name`,`document`,`date`) VALUES (?,?,?,?,?)");
+    $stmt->bind_param("sssss",$email,$type,$name,$document,$datetime);
     $stmt->execute();
 
-    if ($stmt->affected_rows > 0) {
-        echo "Image uploaded and inserted into the database.";
-        header("Location:$returnUrl.php?status=kyc updated");
-    } else {
-        header("Location:$returnUrl.php?status=invalid images");
-        exit();
-    }
-
-    $stmt->close();
-     
-    header("Location:$returnUrl.php?status=kyc updated");
+        if ($stmt->affected_rows > 0) {
+            $stmt->close();
+            header("Location:$returnUrl.php?status=Document updated successfully");
+            exit();
+        }
+        else{
+             header("Location:$returnUrl.php?status=invalid images");
+             exit();
+        }
     }
     else{
-         header("Location:$returnUrl.php?status=invalid images");
-         exit();
+             header("Location:$returnUrl.php?status=invalid images");
+             exit();
     }
 ?>

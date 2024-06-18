@@ -10,7 +10,7 @@
 			<!-- Widget -->
 			<div class="col-md-4 mb-3 mb-md-0">
 				<div class="text-center text-white text-primary-hover">
-					Copyrights ©2024 Eduport. Build by <a href="https://www.webestica.com/" target="_blank" class="text-white">Webestica</a>.
+					Copyrights ©2024 ChillBot. Build by <a href="https://www.chillbot.in/" target="_blank" class="text-white">ChillBot</a>.
 				</div>
 			</div>
 			<!-- Widget -->

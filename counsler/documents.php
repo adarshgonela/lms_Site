@@ -2,8 +2,7 @@
 <html lang="en">
 
 <head>
-	<title>Eduport - LMS, Education and Course Theme</title>
-
+		<?php include_once('common/title.php'); ?>
 	<!-- Meta Tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -106,7 +105,7 @@
 				<div class="card bg-transparent border rounded-3">
 					<!-- Card header START -->
 					<div class="card-header bg-transparent border-bottom">
-						<h3 class="mb-0">My Applications</h3>
+						<h3 class="mb-0">My documents</h3>
 					</div>
 					<!-- Card header END -->
 
@@ -116,6 +115,84 @@
 
 					<!-- Card body START -->
 					<div class="card-body">
+					    <h6>Search Student</h6>
+					        <form>
+					            <div class="row">
+        					    <div class="col-md-6 mt-2">
+								<!-- Short by filter -->
+								
+									<select class="form-select js-choice border-0 z-index-9 bg-transparent" aria-label=".form-select-sm" name="student">
+                                    <option value=""> Select Student</option>
+									<?php
+									    $selected = isset($_REQUEST['student']) ? $_REQUEST['student'] : '';
+										$students = $usersRepo->fetchby("`counsler`='$email'");
+										foreach($students as $student){
+											$studentEmail = $student['email'];
+											$studentName = $student['name'];
+											$isSelected = ($selected == $studentEmail) ? 'selected' : '';
+                                    ?>
+                                    <option value="<?php echo $studentEmail ?>"  <?php echo $isSelected; ?>> <?php echo "$studentName"; ?> </option>
+									<?php } ?>
+									</select>
+							    </div>
+        						
+    							<div class="col-md-6 mt-2">
+    							<button class="col-md-12 btn btn-purple" type="submit">Search</button>
+    							</div>
+    						</div>
+						</form>
+        						
+						<?php
+									        if(isset($_REQUEST['student'])){
+						?>
+						
+						<hr>
+
+					    
+					        <h6>New Document</h6>
+					        <form  action="user/redirect/documents/add.php" method="post" enctype="multipart/form-data">
+					            <div class="row">
+					              
+					            <div class="col-md-6 mt-2">
+        								
+    									<input type="text" class="form-control" name="student"  value="<?php echo $_REQUEST['student']; ?>" readonly>
+        							
+        						</div>
+        						
+        					    <div class="col-md-6 mt-2">
+        								<!-- Short by filter -->
+        								
+        									<select class="form-select js-choice border-0 z-index-9 bg-transparent" aria-label=".form-select-sm" name="type">
+                                            <option value=""> Select Docyment type</option>
+        									<option value="educational">Educational</option>
+                                            
+        								
+        									</select>
+        						</div>
+        							
+        						<div class="col-md-6 mt-2">
+        								
+    									<input type="file" class="form-control" name="document" placeholder="Document">
+        							
+        						</div>
+        						
+        						<div class="col-md-6 mt-2">
+        								
+    									<input type="text" class="form-control" name="name" placeholder="Document name">
+        							
+        						</div>
+        						
+    							<div class="col-md-6 mt-2">
+    							<button class="col-md-12 btn btn-purple" type="submit">Add document</button>
+    							</div>
+    						</div>
+						</form>
+        						<?php
+        						}
+        						?>
+						
+						
+						<hr>
 
 						<!-- Search and select START -->
 						<div class="row g-3 align-items-center justify-content-between mb-4">
@@ -151,9 +228,10 @@
 								<!-- Table head -->
 								<thead>
 									<tr>
-										<th scope="col" class="border-0 rounded-start">College</th>
-										<th scope="col" class="border-0">Application Id</th>
-										<th scope="col" class="border-0">Fees</th>
+										<th scope="col" class="border-0 rounded-start">Document Type</th>
+										<th scope="col" class="border-0">Document Name</th>
+										<th scope="col" class="border-0">Uploaded Date</th>
+										<th scope="col" class="border-0">Status</th>
 										<th scope="col" class="border-0 rounded-end">Action</th>
 									</tr>
 								</thead>
@@ -162,45 +240,50 @@
 								<tbody>
 									<!-- Table item -->
 									<?php
-
-											$applications = $applicationsRepo->fetchBy("`email` = '$email'");
-											foreach($applications as $application){
-												$college = $application['college'];
-												$id = "A0".$application['id'];
+									        if(isset($_REQUEST['student'])){
+    									        $email = $_REQUEST['student'];
+    
+    											$documents = $documentsRepo->fetchBy("`email` = '$email'");
+									        }
+									        
+									        else{
+									            $documents = [];
+									        }
+											foreach($documents as $document){
+												$type = $document['type'];
+												$name = $document['name'];
+												$date =$document['date'];
+												$status =$document['status'];
+												
 
 									?>
 									<tr>
 										<!-- Table data -->
 										<td>
-											<div class="d-flex align-items-center">
-												<!-- Image -->
-												<div class="w-100px">
-													<img src="assets/images/courses/4by3/08.jpg" class="rounded" alt="">
-												</div>
-												<div class="mb-0 ms-2">
-													<!-- Title -->
-													<h6><a href="#"><?php echo $college; ?></a></h6>
-													<!-- Info -->
-													<div class="overflow-hidden">
-														<h6 class="mb-0 text-end">85%</h6>
-														<div class="progress progress-sm bg-primary bg-opacity-10">
-															<div class="progress-bar bg-primary aos" role="progressbar" data-aos="slide-right" data-aos-delay="200" data-aos-duration="1000" data-aos-easing="ease-in-out" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
+											<h6><?php echo $type; ?></h6>
+										</td>
+										
+										<td>
+											<h6><?php echo $name; ?></h6>
 										</td>
 
 										<!-- Table data -->
-										<td><?php echo $id; ?></td>
+										<td><?php echo $date; ?></td>
 
 										<!-- Table data -->
-										<td>40</td>
+										<td><?php echo $status; ?></td>
 
 										<!-- Table data -->
 										<td>
-											<a href="#" class="btn btn-sm btn-primary-soft me-1 mb-1 mb-md-0"><i class="bi bi-play-circle me-1"></i>Continue</a>
+											<a href="<?php
+            								if($document['document'] && $document['document']!=""){
+            								    echo "data:application/pdf;base64,".base64_encode($document['document']);
+            								}
+            								else{
+            								    echo "assets/images/avatar/default.png";
+            								}
+            								?>"
+            								class="btn btn-sm btn-primary-soft me-1 mb-1 mb-md-0" download><i class="bi bi-arrow-down-circle me-1"></i>Download</a>
 										</td>
 									</tr>
 
@@ -246,38 +329,7 @@ Page content END -->
 </main>
 <!-- **************** MAIN CONTENT END **************** -->
 
-<!-- =======================
-Footer START -->
-<footer class="bg-dark p-3">
-	<div class="container">
-		<div class="row align-items-center">
-			<!-- Widget -->
-			<div class="col-md-4 text-center text-md-start mb-3 mb-md-0">
-				<!-- Logo START -->
-				<a href="index-2.html"> <img class="h-20px" src="assets/images/logo-light.svg" alt="logo"> </a>
-			</div>
-			
-			<!-- Widget -->
-			<div class="col-md-4 mb-3 mb-md-0">
-				<div class="text-center text-white text-primary-hover">
-					Copyrights ©2024 Eduport. Build by <a href="https://www.webestica.com/" target="_blank" class="text-white">Webestica</a>.
-				</div>
-			</div>
-			<!-- Widget -->
-			<div class="col-md-4">
-				<!-- Rating -->
-				<ul class="list-inline mb-0 text-center text-md-end">
-					<li class="list-inline-item ms-2"><a href="#"><i class="text-white fab fa-facebook"></i></a></li>
-					<li class="list-inline-item ms-2"><a href="#"><i class="text-white fab fa-instagram"></i></a></li>
-					<li class="list-inline-item ms-2"><a href="#"><i class="text-white fab fa-linkedin-in"></i></a></li>
-					<li class="list-inline-item ms-2"><a href="#"><i class="text-white fab fa-twitter"></i></a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
-</footer>
-<!-- =======================
-Footer END -->
+	<?php include_once('common/footer.php'); ?>
 
 <!-- Back to top -->
 <div class="back-top"><i class="bi bi-arrow-up-short position-absolute top-50 start-50 translate-middle"></i></div>

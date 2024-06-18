@@ -4,14 +4,35 @@ include '../repository.php';
 include '../conn.php';
 
 
-$return = "../../student";
-$email = $_REQUEST['email'];
+$return = "../../profile";
+$_REQUEST['email'] = $_SESSION['email'];
 $usersRepo->update($_REQUEST,['name','mobile']);
 $profileRepo->update($_REQUEST,['dob','address','college','passingYear','cgpa','gtype','gboard']);
 
-header("Location: $return.php?msg = application added&email=$email");
+
+$documentName = $_FILES["image"]["name"];
+$documentTmpName = $_FILES["image"]["tmp_name"];
+if($documentTmpName){
+    $document = file_get_contents($documentTmpName);
+}
+else{
+    $document = NULL; 
+}
+
+
+if($document){
+
+$stmt = $conn->prepare("update `profile` set `image`= ? WHERE `email` = ?");
+$stmt->bind_param("ss",$document,$_REQUEST['email']);
+$stmt->execute();
+
+}
+
+header("Location: $return.php?msg=Profile updated successfully!");
 
 exit();
+
+
 
 
 ?>

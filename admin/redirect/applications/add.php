@@ -5,22 +5,40 @@ include '../conn.php';
 
 $return = "../../applications";
 
-$email = $_REQUEST['email'];
-$collegeId = $_REQUEST['collegeId'];
-$appliction = $applicationsRepo->fetch([],"`email`='$email' AND `collegeId`='$collegeId'");
+$sid = $_REQUEST['sid'];
+$uid = $_REQUEST['uid'];
+$appliction = $applicationsRepo->fetch([],"`sid`='$sid' AND `uid`='$uid'");
 if($appliction){
-    header("Location: ../../newapplication.php?msg=application already exist&email=$email");
+    header("Location: ../../newapplication.php?msg=application already exist&student=$sid");
     exit();
 }
 
-$_REQUEST['date'] = $date;
-$_REQUEST['counsler'] = $_SESSION['email'];
-$college = $collegesRepo->fetch($collegeId);
+//student
+$student = $usersRepo->fetch($sid);
+$_REQUEST['sid'] = $sid;
+$_REQUEST['sname'] = $student['name'];
+
+
+//counsler
+$cid = $_REQUEST['cid'];
+$counsler = $usersRepo->fetch($cid);
+$_REQUEST['cid'] = $cid;
+$_REQUEST['cname'] = $counsler['name'];
+
+//university
+$college = $collegesRepo->fetch($uid);
+$_REQUEST['uid'] = $uid;
+$_REQUEST['uname'] = $college['name'];
 $_REQUEST['fees'] = $college['fee'];
-$_REQUEST['college'] = $college['name'];
+$_REQUEST['ccm'] = $college['ccm'];
+$_REQUEST['acm'] = $college['acm'];
 
+$_REQUEST['appliedon'] = $date;
 
-$applicationsRepo->save($_REQUEST,['email','counsler','college','collegeId','fees','date']);
+print_r($_REQUEST);
+
+$applicationsRepo->save($_REQUEST,['sid','sname','cid','cname','uid','uname','degree','semister','fees','ccm','acm','appliedon']);
+// $paymentsRepo->save($_REQUEST,['email','counsler','college','collegeId','fees','date']);
 
 
 header("Location: $return.php?msg = application added");

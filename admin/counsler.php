@@ -84,6 +84,7 @@
 	<link rel="stylesheet" type="text/css" href="assets/vendor/font-awesome/css/all.min.css">
 	<link rel="stylesheet" type="text/css" href="assets/vendor/bootstrap-icons/bootstrap-icons.css">
 	<link rel="stylesheet" type="text/css" href="assets/vendor/overlay-scrollbar/css/overlayscrollbars.min.css">
+	<link rel="stylesheet" type="text/css" href="assets/vendor/choices/css/choices.min.css">
 
 	<!-- Theme CSS -->
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
@@ -101,7 +102,7 @@
     $counslerDate = $counsler['date'];
     
     $students = $usersRepo->fetchBy("`counsler`='$counslerEmail'");
-    $applications = $applicationsRepo->fetchBy("`counsler`='$counslerEmail'");
+    $applications = $applicationsRepo->fetchBy("`cid`='$counslerEmail'");
     
     $totalstudents = count($students);
     $totalApps = count($applications);
@@ -193,10 +194,9 @@
 							<div class="card-body p-0">
 								<div class="d-sm-flex justify-content-between p-4">
 									<h4 class="text-blue mb-0"><?php echo $totalstudents ?></h4>
-									<p class="mb-0"><span class="text-success me-1">0.20%<i class="bi bi-arrow-up"></i></span>vs last Week</p>
+									
 								</div>
-								<!-- Apex chart -->
-								<div id="activeChartstudent"></div>
+								
 							</div>
 						</div>
 					</div>
@@ -213,10 +213,9 @@
 							<div class="card-body p-0">
 								<div class="d-sm-flex justify-content-between p-4">
 									<h4 class="text-blue mb-0"><?php echo $totalApps ?></h4>
-									<p class="mb-0"><span class="text-success me-1">0.35%<i class="bi bi-arrow-up"></i></span>vs last Week</p>
+									
 								</div>
-								<!-- Apex chart -->
-								<div id="activeChartstudent2"></div>
+								
 							</div>
 						</div>
 					</div>
@@ -276,7 +275,7 @@
 												</div>
 												<div class="mb-0 ms-2">
 													<!-- Title -->
-													<h6 class="mb-0"><a href="#" class="stretched-link"><?php echo $studentName ?></a></h6>
+													<h6 class="mb-0"><a href="admin/student.php?student=<?php echo $studentEmail ?>" class="stretched-link"><?php echo $studentName ?></a></h6>
 													<!-- Address -->
 													<!--span class="text-body small"><i class="fas fa-fw fa-map-marker-alt me-1 mt-1"></i>Mumbai</span --> 
 												</div>
@@ -353,91 +352,166 @@
 					<div class="card-header bg-light border-bottom">
 						<h5 class="mb-0">Applications</h5>
 					</div>
+					
+					<div class="table-responsive border-0">
+					    
+					    <!-- Card body START -->
+					<div class="card-body">
+						<form>
+						<input type="hidden" name="counsler" value="<?php
+                            if(isset($_REQUEST['counsler'])){echo $_REQUEST['counsler']; }?>">
+						<!-- Search and select START -->
+						<div class="row g-3 align-items-center justify-content-between mb-4">
+							<!-- Content -->
+							<h5 class="text-sm-start mb-0 pt-0">Search</h4>
+							<div class="col-md-6">
+								
+									<input class="form-control pe-5 bg-transparent" type="search" name="search" placeholder="Search By Student Or College" aria-label="Search"  value="<?php
+                            if(isset($_REQUEST['search'])){echo $_REQUEST['search']; }?>">
+							</div>
 
-					<!-- Card body START -->
-					<div class="card-body pb-0">
-						<!-- Table START -->
-						<div class="table-responsive border-0">
-							<table class="table table-dark-gray align-middle p-4 mb-0 table-hover">
-
-								<!-- Table head -->
-							<thead>
-									<tr>
-										<th scope="col" class="border-0 rounded-start">Student</th>
-										<th scope="col" class="border-0">College</th>
-										<th scope="col" class="border-0">Application Id</th>
-										<th scope="col" class="border-0">Fees</th>
-										<th scope="col" class="border-0 rounded-end">Action</th>
-									</tr>
-								</thead>
-
-								<!-- Table body START -->
-								<!-- Table body START -->
-								<tbody>
-									<!-- Table item -->
-									
+							<!-- Select option -->
+							<div class="col-md-6">
+								<!-- Short by filter -->
+								
+									<select class="form-select js-choice border-0 z-index-9 bg-transparent" aria-label=".form-select-sm" name="student">
+                                    <option value=""> Select Student</option>
 									<?php
-									        
-											foreach($applications as $application){
-												$college = $application['college'];
-												$id = "A0".$application['id'];
-												$fees = $application['fees'];
+									    $selected = isset($_REQUEST['student']) ? $_REQUEST['student'] : '';
+										$students = $usersRepo->fetchby("");
+										foreach($students as $student){
+											$studentEmail = $student['email'];
+											$studentName = $student['name'];
+											$isSelected = ($selected == $studentEmail) ? 'selected' : '';
+                                    ?>
+                                    <option value="<?php echo $studentEmail ?>"  <?php echo $isSelected; ?>> <?php echo "$studentName"; ?> </option>
+									<?php } ?>
+									</select>
+							</div>
+							
+							
 
+							<div class="col-md-6">
+								<!-- Short by filter -->
+								
+									<select class="form-select js-choice border-0 z-index-9 bg-transparent" aria-label=".form-select-sm" name="college">
+                                        <option value="">Select College</option>
+                                        <?php
+                                            $selectedCollege = isset($_REQUEST['college']) ? $_REQUEST['college'] : '';
+                                            $colleges = $collegesRepo->fetchBy("");
+                                            foreach ($colleges as $college) {
+                                                $collegeId = $college['id'];
+                                                $collegeName = $college['name'];
+                                                $isSelected = ($collegeId == $selectedCollege) ? 'selected' : '';
+                                        ?>
+                                        <option value="<?php echo $collegeId; ?>" <?php echo $isSelected; ?>><?php echo $collegeName; ?></option>
+                                        <?php } ?>
+                                    </select>
 
-
-									?>
-									<tr>
-										<td><?php echo $application['email']; ?></td>
-										<!-- Table data -->
-										<td>
-											<div class="d-flex align-items-center">
-												<!-- Image -->
-												<div class="w-100px">
-													<img src="assets/images/courses/4by3/08.jpg" class="rounded" alt="">
-												</div>
-												<div class="mb-0 ms-2">
-													<!-- Title -->
-													<h6><a href="#"><?php echo $college; ?></a></h6>
-													<!-- Info -->
-													<div class="overflow-hidden">
-														<h6 class="mb-0 text-end">85%</h6>
-														<div class="progress progress-sm bg-primary bg-opacity-10">
-															<div class="progress-bar bg-primary aos" role="progressbar" data-aos="slide-right" data-aos-delay="200" data-aos-duration="1000" data-aos-easing="ease-in-out" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</td>
-
-										<!-- Table data -->
-										<td><?php echo $id; ?></td>
-
-										<!-- Table data -->
-										<td><?php echo $fees ?></td>
-
-										<!-- Table data -->
-										<td>
-											<a href="#" class="btn btn-sm btn-primary-soft me-1 mb-1 mb-md-0"><i class="bi bi-play-circle me-1"></i>Continue</a>
-										</td>
-									</tr>
-
+							</div>
+							<div class="col-md-6">
+								<!-- Short by filter -->
+								
+									<select class="form-select js-choice border-0 z-index-9 bg-transparent" aria-label=".form-select-sm" name="status">
+                                    <option value="">Select Status</option>
 									<?php
-										}
-                                            if(count($applications)==0){
-									            echo "<tr><td colspan='5' class='text-center'>No data found</td></tr>";
-									        }
-									?>
+										$selected = isset($_REQUEST['status']) ? $_REQUEST['status'] : '';
+										foreach($appStatusList as $appstatus){
+											$isSelected = ($selected == $appstatus) ? 'selected' : '';
+                                    ?>
+                                    <option value="<?php echo $appstatus ?>" <?php echo $isSelected; ?>> <?php echo "$appstatus"; ?> </option>
+									<?php } ?>
+									</select>
+							</div>
+							<!--<hr style="height:0px;border-top: 8px solid #000;" class"mt-0 mb-0 pt-0 pb-0">-->
+							<h5 class="text-sm-start  mb-0 mt-4 pt-0">Sort</h4>
+							<div class="col-md-6">
+								<!-- Short by filter -->
+								
+									<select class="form-select js-choice border-0 z-index-9 bg-transparent" aria-label=".form-select-sm" name="scollege">
+                                    <option value=""> Sort By</option>
+									<?php
+										$colleges = $collegesRepo->fetchBy("");
+										foreach($colleges as $college){
+											$collegeId = $college['id'];
+											$collegeName = $college['name'];
+                                    ?>
+                                    <option value="<?php echo $collegeId ?>"> <?php echo "$collegeName"; ?> </option>
+									<?php } ?>
+									</select>
+							</div>
+							<div class="col-md-6">
+								<!-- Short by filter -->
+								
+									<select class="form-select js-choice border-0 z-index-9 bg-transparent" aria-label=".form-select-sm" name="sstatus">
+                                    <option value=""> Sort By</option>
+									<?php
+										$colleges = $collegesRepo->fetchBy("");
+										foreach($colleges as $college){
+											$collegeId = $college['id'];
+											$collegeName = $college['name'];
+                                    ?>
+                                    <option value="<?php echo $collegeId ?>"> <?php echo "$collegeName"; ?> </option>
+									<?php } ?>
+									</select>
+							</div>
+							<div class="col-md-6">
+							<button class="col-md-12 btn btn-purple" type="submit">search</button>
+							</div>
 
-									
-								</tbody>
-								<!-- Table body END -->
-							</table>
 						</div>
-						<!-- Table END -->
+						</form>
+						
+						<!-- Search and select END -->
+					    
+					    <?php
+					        $filter = [];	
+                            
+							if(isset($_REQUEST['student']) && $_REQUEST['student']!=""){
+								$student = $_REQUEST['student'];
+								$filter['sid'] = $student;
+								
+							}
+							if(isset($_REQUEST['college']) && $_REQUEST['college']!=""){
+								$college = $_REQUEST['college'];
+								$filter['uid'] = $college;
+								
+							}
+							if(isset($_REQUEST['counsler']) && $_REQUEST['counsler']!=""){
+								$counsler = $_REQUEST['counsler'];
+								$filter['cid'] = $counsler;
+								
+							}
+							if(isset($_REQUEST['status']) && $_REQUEST['status']!=""){
+								$key = $_REQUEST['status'];
+								$filter['status'] = $key;
+								
+							}
+							if(isset($_REQUEST['search']) && $_REQUEST['search']!=""){
+							    $filter = "(`email` LIKE '%$search%' or `college` LIKE '%$search%')";
+							}
+							
+							
+							$data = $applicationsRepo->fetchBy($filter);
+							foreach($data as $i=>$d){
+                              $data[$i]['action'] = '<a href="admin/application.php?id='.$d['id'].'" target="_blank" class="btn btn-primary-soft btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="View" aria-label="View">
+											<i class="bi bi-eye-fill"></i>
+										</a>';
+							  $data[$i]['status'] = '<div class="badge bg-success bg-opacity-10 text-success">'.$d['status'].'</div>';
+                            }
+							$columns = ["Application Id" => "id","Student" => "sname","Counsler" => "cname" ,"University" => "uname","Fees" => "fees", "Applied On"=>"appliedon", "Status" => "status" , "Action" => "action"];
+								
+					    
+					    ?>
+					    <br>
+						<?php include "common/table.php"; ?>
 					</div>
-					<!-- Card body END -->
+					<!-- Table END -->
+				</div>
+				<!-- Card body END -->
 
+
+					
 					<!-- Card footer START -->
 					<div class="card-footer bg-transparent">
 						<!-- Pagination START -->

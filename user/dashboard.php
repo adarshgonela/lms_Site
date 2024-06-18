@@ -113,7 +113,7 @@
 							<div class="ms-4">
 								<div class="d-flex">
 									
-									<h5 class="purecounter mb-0 fw-bold" data-purecounter-start="0" data-purecounter-end="<?php echo $appliedColleges; ?>"	data-purecounter-delay="100">0</h5>
+									<h5 class="purecounter mb-0 fw-bold" data-purecounter-start="0" data-purecounter-end="<?php echo $appliedcourses; ?>"	data-purecounter-delay="100">0</h5>
 								</div>
 								<p class="mb-0 h6 fw-light">Total Courses</p>
 							</div>
@@ -125,7 +125,7 @@
 							<span class="display-6 lh-1 text-purple mb-0"><i class="fas fa-clipboard-check fa-fw"></i></span>
 							<div class="ms-4">
 								<div class="d-flex">
-									<h5 class="purecounter mb-0 fw-bold" data-purecounter-start="0" data-purecounter-end="<?php echo $availablecolleges; ?>"	data-purecounter-delay="200">0</h5>
+									<h5 class="purecounter mb-0 fw-bold" data-purecounter-start="0" data-purecounter-end="<?php echo  $totalcourses; ?>"	data-purecounter-delay="200">0</h5>
 								</div>
 								<p class="mb-0 h6 fw-light">Available Courses</p>
 							</div>

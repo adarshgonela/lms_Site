@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 17, 2024 at 08:33 AM
+-- Generation Time: Jun 18, 2024 at 07:13 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -18,24 +18,26 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `lmssite1`
+-- Database: `lmssite`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `coursetable`
+-- Table structure for table `courses`
 --
 
-CREATE TABLE `coursetable` (
+CREATE TABLE `courses` (
   `id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
   `description` varchar(200) NOT NULL,
-  `instructiorid` int(11) NOT NULL,
+  `tid` int(11) NOT NULL,
+  `tname` varchar(50) NOT NULL,
   `duration` varchar(20) NOT NULL,
   `price` int(11) NOT NULL,
   `totallectures` int(11) NOT NULL,
-  `completedlecture` int(11) NOT NULL
+  `enrolledstudents` int(250) NOT NULL,
+  `level` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -46,14 +48,31 @@ CREATE TABLE `coursetable` (
 
 CREATE TABLE `lectures` (
   `id` int(11) NOT NULL,
-  `courseid` int(11) NOT NULL,
-  `coursename` varchar(50) NOT NULL,
+  `cid` int(11) NOT NULL,
+  `cname` varchar(50) NOT NULL,
   `tid` varchar(50) NOT NULL,
   `tname` varchar(50) NOT NULL,
   `description` varchar(200) NOT NULL,
   `url` varchar(200) NOT NULL,
   `exercise` varchar(50) NOT NULL,
-  `notesurl` varchar(200) NOT NULL
+  `notes` varchar(200) NOT NULL,
+  `duration` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `library`
+--
+
+CREATE TABLE `library` (
+  `id` int(11) NOT NULL,
+  `name` varchar(30) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `author` varchar(50) NOT NULL,
+  `uploadedon` varchar(50) NOT NULL,
+  `file` mediumblob NOT NULL,
+  `status` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -74,9 +93,10 @@ CREATE TABLE `paymentstable` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `studentsmaterial`
+-- Table structure for table `profile`
 --
 
+<<<<<<< HEAD:lmssite1.sql
 CREATE TABLE `studentsmaterial` (
   `id` int(11) NOT NULL,
   `name` varchar(30) NOT NULL,
@@ -93,13 +113,14 @@ CREATE TABLE `studentsmaterial` (
 
 CREATE TABLE `tuitor` (
   `id` int(11) NOT NULL,
+=======
+CREATE TABLE `profile` (
+>>>>>>> 355220ab0baafa6e5f68ae8d1c6ff36ae84df2f3:lmssite (1).sql
   `name` varchar(50) NOT NULL,
-  `mobile` int(11) NOT NULL,
-  `education` varchar(20) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `location` varchar(30) NOT NULL,
-  `doj` int(11) NOT NULL,
-  `description` varchar(200) NOT NULL
+  `contact` int(11) NOT NULL,
+  `college` varchar(100) NOT NULL,
+  `education` varchar(30) NOT NULL,
+  `image` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------

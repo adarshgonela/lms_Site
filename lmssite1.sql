@@ -88,10 +88,10 @@ CREATE TABLE `studentsmaterial` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tutor`
+-- Table structure for table `tuitor`
 --
 
-CREATE TABLE `tutor` (
+CREATE TABLE `tuitor` (
   `id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
   `mobile` int(11) NOT NULL,

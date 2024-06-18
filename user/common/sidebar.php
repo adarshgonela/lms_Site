@@ -2,17 +2,10 @@
 <!-- =======================
 Page Banner START -->
 <?php
-<<<<<<< HEAD
 	// $appliedColleges = (int)$applicationsRepo->aggregate("count","college","`email` = '$email'");
 	// $availablecolleges = (int)$collegesRepo->aggregate("count","id","");
 	// $acceptedcolleges = (int)$applicationsRepo->aggregate("count","college","`email` = '$email' AND `status`= 'approved'");
 	// $totalcourses = (int)$coursesRepo->aggregate("count","id","");
-=======
-	$appliedColleges = (int)$applicationsRepo->aggregate("count","id","`sid` = '$email'");
-	$availablecolleges = (int)$collegesRepo->aggregate("count","id","");
-	$acceptedcolleges = (int)$applicationsRepo->aggregate("count","id","`sid` = '$email' AND `status`= 'approved'");
-	$totalcourses = (int)$coursesRepo->aggregate("count","id","");
->>>>>>> 2b9f47f13d88c7e08446cd3eeae8c39eb7002ccb
 ?>
 <section class="pt-0">
 	<div class="container-fluid px-0">
@@ -45,7 +38,6 @@ Page Banner START -->
 							<div>
 								<h1 class="my-1 fs-4"><?php echo $user['name']; ?></h1>
 								<ul class="list-inline mb-0">
-<<<<<<< HEAD
 									<li class="list-inline-item me-3 mb-1 mb-sm-0">
 										<span class="h6">255</span>
 										<span class="text-body fw-light">points</span>
@@ -58,17 +50,6 @@ Page Banner START -->
 										<span class="h6"><?php echo  $totalcourses; ?></span>
 										<span class="text-body fw-light">Available Courses</span>
 									</li> -->
-=======
-									
-									<li class="list-inline-item me-3 mb-1 mb-sm-0">
-										<span class="h6"><?php echo $appliedColleges; ?></span>
-										<span class="text-body fw-light"> Applications</span>
-									</li>
-									<!--<li class="list-inline-item me-3 mb-1 mb-sm-0">-->
-									<!--	<span class="h6"><?php echo  $totalcourses; ?></span>-->
-									<!--	<span class="text-body fw-light">Available Courses</span>-->
-									<!--</li>-->
->>>>>>> 2b9f47f13d88c7e08446cd3eeae8c39eb7002ccb
 								</ul>
 							</div>
 							<!-- Button -->

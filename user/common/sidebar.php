@@ -2,10 +2,10 @@
 <!-- =======================
 Page Banner START -->
 <?php
-	// $appliedColleges = (int)$applicationsRepo->aggregate("count","college","`email` = '$email'");
-	// $availablecolleges = (int)$collegesRepo->aggregate("count","id","");
-	// $acceptedcolleges = (int)$applicationsRepo->aggregate("count","college","`email` = '$email' AND `status`= 'approved'");
-	// $totalcourses = (int)$coursesRepo->aggregate("count","id","");
+	$appliedcourses = (int)$mycoursesRepo->aggregate("count","course","`email` = '$email'");
+	$availablecourses = (int)$collegesRepo->aggregate("count","id","");
+	$acceptedcourses = (int)$mycoursesRepo->aggregate("count","course","`email` = '$email' AND `status`= 'approved'");
+	$totalcourses = (int)$coursesRepo->aggregate("count","id","");
 ?>
 <section class="pt-0">
 	<div class="container-fluid px-0">
@@ -32,15 +32,15 @@ Page Banner START -->
 									<!-- <li class="list-inline-item me-3 mb-1 mb-sm-0">
 										<span class="h6">255</span>
 										<span class="text-body fw-light">points</span>
-									</li>
+									</li> -->
 									 <li class="list-inline-item me-3 mb-1 mb-sm-0">
-										<span class="h6"><?php echo $appliedColleges; ?></span>
+										<span class="h6"><?php echo $appliedcourses; ?></span>
 										<span class="text-body fw-light"> Courses</span>
 									</li>
 									<li class="list-inline-item me-3 mb-1 mb-sm-0">
 										<span class="h6"><?php echo  $totalcourses; ?></span>
 										<span class="text-body fw-light">Available Courses</span>
-									</li> -->
+									</li>
 								</ul>
 							</div>
 							<!-- Button -->
@@ -90,7 +90,7 @@ Page content START -->
 							<div class="list-group list-group-dark list-group-borderless collapse-list">
 								<a class="list-group-item <?php echo $current_file=='dashboard'? 'active' :'' ;?>" href="user/dashboard.php"><i class="bi bi-ui-checks-grid fa-fw me-2"></i>Dashboard</a>
 								
-								<a class="list-group-item <?php echo $current_file=='applications'? 'active' :'' ;?>" href="user/applications.php"><i class="bi bi-files fa-fw me-2"></i>My Courses</a>
+								<a class="list-group-item <?php echo $current_file=='mycourses'? 'active' :'' ;?>" href="user/mycourses.php"><i class="bi bi-files fa-fw me-2"></i>My Courses</a>
 								<a class="list-group-item <?php echo $current_file=='courses'? 'active' :'' ;?>" href="user/courses.php"><i class="bi bi-cart-check fa-fw me-2"></i>Courses</a>
 								<a class="list-group-item <?php echo $current_file=='colleges'? 'active' :'' ;?>" href="user/colleges.php"><i class="bi bi-card-checklist fa-fw me-2"></i>Colleges</a>
 								<a class="list-group-item <?php echo $current_file=='payments'? 'active' :'' ;?>" href="user/payments.php"><i class="bi bi-wallet2 fa-fw me-2"></i>Payments</a>

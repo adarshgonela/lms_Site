@@ -15,16 +15,15 @@
     $coursesRepo = new Repository('courses','id',$conn);
     $collegesRepo = new Repository('colleges','id',$conn);
     $documentsRepo = new Repository('documents','id',$conn);
-    $applicationsRepo = new Repository('applications','id',$conn);
+    $mycoursesRepo = new Repository('coursetable','id',$conn);
     $paymentsRepo = new Repository('payments','id',$conn);
     $profileRepo = new Repository('profile','email',$conn);
 
    
 
     $email = $_SESSION['email'];
+   // $userid = $_SESSION['id'];
     $user = $usersRepo->fetch($email);
     $profile = $profileRepo->fetch($email);
 
-
-     
 ?>

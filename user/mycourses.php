@@ -2,13 +2,13 @@
 <html lang="en">
 
 <head>
-	<?php include_once('common/title.php'); ?>
+		<?php include_once('common/title.php'); ?>
 
 	<!-- Meta Tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="author" content="">
-	<meta name="description" content="">
+	<meta name="author" content="Webestica.com">
+	<meta name="description" content="Eduport- LMS, Education and Course Theme">
 	<base href="../">
 
 	<!-- Dark mode -->
@@ -40,7 +40,7 @@
 				const btnToActive = document.querySelector(`[data-bs-theme-value="${theme}"]`)
 				const svgOfActiveBtn = btnToActive.querySelector('.mode-switch use').getAttribute('href')
 
-				document.querySelectorAll('[data-bs-theme-value]').forEach(element => {
+				document.querySelectorAll('[data-bs-theme-value]').forEach(elements => {
 					element.classList.remove('active')
 				})
 
@@ -103,55 +103,18 @@
 			<?php include_once('common/sidebar.php'); ?>
 			<!-- Main content START -->
 			<div class="col-xl-9">
-
-				<!-- Counter boxes START -->
-				<div class="row mb-4">
-					<!-- Counter item -->
-					<div class="col-sm-6 col-lg-4 mb-3 mb-lg-0">
-						<div class="d-flex justify-content-center align-items-center p-4 bg-orange bg-opacity-15 rounded-3">
-							<span class="display-6 lh-1 text-orange mb-0"><i class="fas fa-tv fa-fw"></i></span>
-							<div class="ms-4">
-								<div class="d-flex">
-									
-									<h5 class="purecounter mb-0 fw-bold" data-purecounter-start="0" data-purecounter-end="<?php echo $appliedColleges; ?>"	data-purecounter-delay="100">0</h5>
-								</div>
-								<p class="mb-0 h6 fw-light">Total Courses</p>
-							</div>
-						</div>
-					</div>
-					<!-- Counter item -->
-					<div class="col-sm-6 col-lg-4 mb-3 mb-lg-0">
-						<div class="d-flex justify-content-center align-items-center p-4 bg-purple bg-opacity-15 rounded-3">
-							<span class="display-6 lh-1 text-purple mb-0"><i class="fas fa-clipboard-check fa-fw"></i></span>
-							<div class="ms-4">
-								<div class="d-flex">
-									<h5 class="purecounter mb-0 fw-bold" data-purecounter-start="0" data-purecounter-end="<?php echo $availablecolleges; ?>"	data-purecounter-delay="200">0</h5>
-								</div>
-								<p class="mb-0 h6 fw-light">Available Courses</p>
-							</div>
-						</div>
-
-					</div>
-					<!-- Counter item -->
-					<div class="col-sm-6 col-lg-4 mb-3 mb-lg-0">
-						<div class="d-flex justify-content-center align-items-center p-4 bg-success bg-opacity-10 rounded-3">
-							<span class="display-6 lh-1 text-success mb-0"><i class="fas fa-medal fa-fw"></i></span>
-							<div class="ms-4">
-								<div class="d-flex">
-									<h5 class="purecounter mb-0 fw-bold" data-purecounter-start="0" data-purecounter-end="<?php echo $acceptedcolleges; ?>" data-purecounter-delay="300">0</h5>
-								</div>
-								<p class="mb-0 h6 fw-light">Entrolled Courses</p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- Counter boxes END -->
-
 				<div class="card bg-transparent border rounded-3">
 					<!-- Card header START -->
 					<div class="card-header bg-transparent border-bottom">
 						<h3 class="mb-0">My Courses</h3>
 					</div>
+					<!-- Card header END -->
+
+					<!-- Card body START -->
+
+					<?php include "common/applications.php"; ?>
+					
+<<<<<<< HEAD:user/mycourses.php
 					<!-- Card header END -->
 
 					<!-- Card body START -->
@@ -191,24 +154,27 @@
 								<!-- Table head -->
 								<thead>
 									<tr>
-										<th scope="col" class="border-0 rounded-start">College</th>
-										<th scope="col" class="border-0">Application Id</th>
-										<th scope="col" class="border-0">Fees</th>
-										<th scope="col" class="border-0 rounded-end">Action</th>
+										<th scope="col" class="border-0 rounded-start">User Id</th>
+										<th scope="col" class="border-0">Instructor Name</th>
+										<th scope="col" class="border-0">Duration</th>
+										<th scope="col" class="border-0">Total lectures</th>
+										<th scope="col" class="border-0 rounded-end">Completed lectures</th>
 									</tr>
 								</thead>
+								
 
 								<!-- Table body START -->
 								<tbody>
 									<!-- Table item -->
 									<?php
 
-											$applications = $applicationsRepo->fetchBy();
-											foreach($applications as $application){
-												$college = $application['college'];
-												$id = "A0".$application['id'];
-												$fees = $application['fees'];
-												$status =$application['status'];
+											$mycourses = $mycoursesRepo->fetchBy();
+											foreach($mycourses as $mycourse){
+												$userid = $mycourse['id'];
+												$instructorname = $mycourse['name'];
+												$cduration =$mycourse['duration'];
+												$totallecture =$mycourse['totallectures'];
+												$completedlectures = $mycourse['completedlecture'];
 
 									?>
 									<tr>
@@ -216,15 +182,15 @@
 										<td>
 											<div class="d-flex align-items-center">
 												<!-- Image -->
-												<div class="w-100px">
-													<img src="assets/images/courses/4by3/08.jpg" class="rounded" alt="">
-												</div>
+												<!-- <div class="w-100px">
+													<img src="assets/images/courses/4by3/08.jpg" class="rounded" alt=""> 
+												</div>-->
 												<div class="mb-0 ms-2">
 													<!-- Title -->
-													<h6><a href="#"><?php echo $college; ?></a></h6>
+													 <h6><a href="#"><?php echo $userid; ?></a></h6>
 													<!-- Info -->
 													<div class="overflow-hidden">
-														<h6 class="mb-0 text-end">85%</h6>
+														<!-- <h6 class="mb-0 text-end">85%</h6> -->
 														<div class="progress progress-sm bg-primary bg-opacity-10">
 															<div class="progress-bar bg-primary aos" role="progressbar" data-aos="slide-right" data-aos-delay="200" data-aos-duration="1000" data-aos-easing="ease-in-out" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
 															</div>
@@ -233,18 +199,24 @@
 												</div>
 											</div>
 										</td>
+                                        
 
 										<!-- Table data -->
-										<td><?php echo $id; ?></td>
+										<!-- <td><?php echo $userid; ?></td> -->
 
 										<!-- Table data -->
-										<td><?php echo $fees; ?></td>
+										<td><?php echo $instructorname; ?></td>
+
+										<!-- Table data -->
+										<td><?php echo $cduration; ?></td>
 
 										<!-- Table data -->
 										<td>
-											<div class="btn btn-sm btn-primary-soft me-1 mb-1 mb-md-0"><?php echo $status ?></div>
+											<?php echo $totallecture;  ?>
 										</td>
-											
+
+										<td>
+											<?php echo $completedlectures;  ?>
 										</td>
 									</tr>
 
@@ -278,6 +250,9 @@
 						<!-- Pagination END -->
 					</div>
 					<!-- Card body START -->
+=======
+					<!-- Card body END -->
+>>>>>>> 2b9f47f13d88c7e08446cd3eeae8c39eb7002ccb:user/applications.php
 				</div>
 			<!-- Main content END -->
 			</div><!-- Row END -->
@@ -289,13 +264,7 @@ Page content END -->
 
 </main>
 <!-- **************** MAIN CONTENT END **************** -->
-
-<!-- =======================
-Footer START -->
-<?php include_once('common/footer.php'); ?>
-<!-- =======================
-Footer END -->
-
+	<?php include_once('common/footer.php'); ?>
 <!-- Back to top -->
 <div class="back-top"><i class="bi bi-arrow-up-short position-absolute top-50 start-50 translate-middle"></i></div>
 

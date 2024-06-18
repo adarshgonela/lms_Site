@@ -153,7 +153,6 @@
 						<h3 class="mb-0">My Courses</h3>
 					</div>
 					<!-- Card header END -->
-<<<<<<< HEAD
 
 					<!-- Card body START -->
 					<div class="card-body">
@@ -279,12 +278,6 @@
 						<!-- Pagination END -->
 					</div>
 					<!-- Card body START -->
-=======
-                    <?php 
-                    include "common/applications.php";
-                    include "common/colleges.php";
-                    ?>
->>>>>>> 2b9f47f13d88c7e08446cd3eeae8c39eb7002ccb
 				</div>
 			<!-- Main content END -->
 			</div><!-- Row END -->

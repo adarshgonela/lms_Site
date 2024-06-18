@@ -14,7 +14,7 @@
     $usersRepo = new Repository('users','email',$conn);
     $coursesRepo = new Repository('courses','id',$conn);
     $collegesRepo = new Repository('colleges','id',$conn);
-    $documentsRepo = new Repository('users','id',$conn);
+    $documentsRepo = new Repository('documents','id',$conn);
     $applicationsRepo = new Repository('applications','id',$conn);
     $paymentsRepo = new Repository('payments','id',$conn);
     $profileRepo = new Repository('profile','email',$conn);

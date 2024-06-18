@@ -108,8 +108,8 @@
     $cgpa = $studentProfile ['cgpa'];
     
     
-    $applications = $applicationsRepo->fetchBy("`email`='$studentEmail'");
-    $approved = (int)$applicationsRepo->aggregate("count","id", "`status`='approved' and `email`='$studentEmail'");
+    $applications = $applicationsRepo->fetchBy("`sid`='$studentEmail'");
+    $approved = (int)$applicationsRepo->aggregate("count","id", "`status`='approved' and `sid`='$studentEmail'");
     
     $totalstudents = 0;
     $totalApps = count($applications);
@@ -156,6 +156,8 @@
 										<span>Full Name:</span>
 										<span class="h6 mb-0"><?php echo $studentName ?></span>
 									</li>
+									
+									
 
 									<li class="list-group-item">
 										<span>Mobile Number:</span>
@@ -182,6 +184,11 @@
 							<!-- Information item -->
 							<div class="col-md-6">
 								<ul class="list-group list-group-borderless">
+								    <li class="list-group-item">
+										<span>Counsler:</span>
+										<span class="h6 mb-0"><?php echo $student['counsler']; ?></span>
+									</li>
+									
 									<li class="list-group-item">
 										<span>Email ID:</span>
 										<span class="h6 mb-0"><?php echo $studentEmail ?></span>
@@ -226,10 +233,7 @@
 							<div class="card-body p-0">
 								<div class="d-sm-flex justify-content-between p-4">
 									<h4 class="text-blue mb-0"><?php echo $approved; ?></h4>
-									<p class="mb-0"><span class="text-success me-1">0.20%<i class="bi bi-arrow-up"></i></span>vs last Week</p>
 								</div>
-								<!-- Apex chart -->
-								<div id="activeChartstudent"></div>
 							</div>
 						</div>
 					</div>
@@ -246,10 +250,7 @@
 							<div class="card-body p-0">
 								<div class="d-sm-flex justify-content-between p-4">
 									<h4 class="text-blue mb-0"><?php echo $totalApps; ?></h4>
-									<p class="mb-0"><span class="text-success me-1">0.35%<i class="bi bi-arrow-up"></i></span>vs last Week</p>
 								</div>
-								<!-- Apex chart -->
-								<div id="activeChartstudent2"></div>
 							</div>
 						</div>
 					</div>
@@ -292,39 +293,27 @@
 
 											
 											foreach($applications as $application){
-												$college = $application['college'];
-												$id = "A0".$application['id'];
+												$college = $application['uname'];
+												$id = "#".$application['id'];
 												$fees = $application['fees'];
 
 
 
 									?>
 									<tr>
-										<td><?php echo $application['email']; ?></td>
+										<td><h6><?php echo $application['sname']; ?></h6></td>
 										<!-- Table data -->
 										<td>
-											<div class="d-flex align-items-center">
-												<!-- Image -->
-												<div class="w-100px">
-													<img src="assets/images/courses/4by3/08.jpg" class="rounded" alt="">
-												</div>
-												<div class="mb-0 ms-2">
+											
 													<!-- Title -->
 													<h6><a href="#"><?php echo $college; ?></a></h6>
 													<!-- Info -->
-													<div class="overflow-hidden">
-														<h6 class="mb-0 text-end">85%</h6>
-														<div class="progress progress-sm bg-primary bg-opacity-10">
-															<div class="progress-bar bg-primary aos" role="progressbar" data-aos="slide-right" data-aos-delay="200" data-aos-duration="1000" data-aos-easing="ease-in-out" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
+												
+												
 										</td>
 
 										<!-- Table data -->
-										<td><?php echo $id; ?></td>
+										<td><a href="admin/application.php?id=<?php echo $application['id']; ?>"><?php echo $id; ?></a></td>
 
 										<!-- Table data -->
 										<td><?php echo $fees ?></td>

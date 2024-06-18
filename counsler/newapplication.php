@@ -2,8 +2,7 @@
 <html lang="en">
 
 <head>
-	<title>Eduport - LMS, Education and Course Theme</title>
-
+	<?php include_once('common/title.php'); ?>
 	<!-- Meta Tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -96,8 +95,8 @@
 <?php include_once('common/header.php'); ?>
 <?php
 //1 get email
-if(isset($_REQUEST['email'])){
-	$email = $_REQUEST['email'];
+if(isset($_REQUEST['student'])){
+	$email = $_REQUEST['student'];
 	$user = $usersRepo->fetch($email);
 	$name = $user['name'];
 }
@@ -148,7 +147,7 @@ Main part START -->
 								<h6 class="mb-lg-0">Student Email <span class="text-danger">*</span></h6>
 							</div>
 							<div class="col-lg-8">
-								<input type="text" class="form-control" id="lastName"  name="email" value="<?php echo $email; ?>" readonly>
+								<input type="text" class="form-control" id="email"  name="sid" value="<?php echo $email; ?>" readonly>
 							</div>
 						</div>
 					</div>
@@ -159,13 +158,143 @@ Main part START -->
 								<h6 class="mb-lg-0">Student Name <span class="text-danger">*</span></h6>
 							</div>
 							<div class="col-lg-8">
-								<input type="text" class="form-control" id="firstName" name="name" value="<?php echo $name; ?>" disabled>
+								<input type="text" class="form-control" id="firstName" name="name" value="<?php echo $name; ?>" readonly>
 							</div>
 						</div>
 					</div><hr>
                     <!-- Education -->
 					<h5 class="mt-0">College</h5>
 
+                    
+                    
+                    <?php
+                    if(isset($_REQUEST['collegeId'])){
+                    	$collegeId = $_REQUEST['collegeId'];
+                    	$college = $collegesRepo->fetch($collegeId);
+                    	
+                    	$name = $college['name'];
+                    	$courses = json_decode($college['courses']);
+                    
+                    ?>
+                    <input type="hidden" class="form-control" id="email"  name="uid" value="<?php echo $collegeId; ?>" readonly>
+                    <div class="col-12">
+						<div class="row g-xl-0 align-items-center">
+							<div class="col-lg-4">
+								<h6 class="mb-lg-0">College <span class="text-danger">*</span></h6>
+							</div>
+							<div class="col-lg-8">
+								<input type="text" class="form-control" id="email" value="<?php echo $name; ?>" readonly>
+							</div>
+						</div>
+					</div>
+					
+					<div class="col-12">
+						<div class="row g-xl-0 align-items-center">
+							<div class="col-lg-4">
+								<h6 class="mb-lg-0">Fees <span class="text-danger">*</span></h6>
+							</div>
+							<div class="col-lg-8">
+								<input type="text" class="form-control" id="email"  name="college" value="<?php echo $currency.$college['fee']; ?>" readonly>
+							</div>
+						</div>
+					</div>
+					
+					<div class="col-12">
+						<div class="row g-xl-0 align-items-center">
+							<div class="col-lg-4">
+								<h6 class="mb-lg-0">Counsler commision <span class="text-danger">*</span></h6>
+							</div>
+							<div class="col-lg-8">
+								<input type="text" class="form-control" id="email"  name="college" value="<?php echo $currency.$college['ccm']; ?>" readonly>
+							</div>
+						</div>
+					</div>
+					
+                    <!-- select course -->
+                    <div class="col-12">
+                        <div class="row g-xl-0 align-items-center">
+                            <div class="col-lg-4">
+                                <h6 class="mb-lg-0">Select Course <span class="text-danger">*</span></h6>
+                            </div>
+                            <div class="col-lg-8">
+                                <select class="form-control" id="collegeId" name="degree">
+									<?php
+										
+										foreach($courses as $id=>$course){
+										
+										
+                                    ?>
+                                    <option value="<?php echo $course ?>"> <?php echo $course; ?> </option>
+									<?php } ?>
+                                </select>
+                            </div>
+							</div>
+    
+                    </div>
+                    
+                    
+                    <div class="col-12">
+                        <div class="row g-xl-0 align-items-center">
+                            <div class="col-lg-4">
+                                <h6 class="mb-lg-0">Semister <span class="text-danger">*</span></h6>
+                            </div>
+                            <div class="col-lg-8">
+                                <select class="form-control" id="collegeName" name="semister">
+									<?php
+										
+										foreach($entrysems as $value=>$label){
+											
+										
+                                    ?>
+                                    <option value="<?php echo $value ?>"> <?php echo $label; ?> </option>
+									<?php } ?>
+                                </select>
+                            </div>
+							</div>
+    
+					
+
+
+
+
+
+                    </div>
+                    
+                    <div class="col-12">
+                        <div class="row g-xl-0 align-items-center">
+                            <div class="col-lg-4">
+                                <h6 class="mb-lg-0">Year <span class="text-danger">*</span></h6>
+                            </div>
+                            <div class="col-lg-8">
+                                <input type="number" class="form-control" id="firstName" name="year" value=<?php echo date("Y"); ?>>
+                            </div>
+							</div>
+    
+					
+
+
+
+
+
+                    </div>
+                    
+                    
+                    <div class="col-12">
+						<div class="row g-xl-0 align-items-center">
+							<div class="col-lg-4">
+								<h6 class="mb-lg-0">Applied On <span class="text-danger">*</span></h6>
+							</div>
+							<div class="col-lg-8">
+								<input type="date" class="form-control" id="firstName" name="appliedon">
+							</div>
+						</div>
+					</div>
+					
+                    <?php
+                    }
+                    else
+                    {
+                    ?>
                     <!-- select college -->
                     <div class="col-12">
                         <div class="row g-xl-0 align-items-center">
@@ -173,7 +302,8 @@ Main part START -->
                                 <h6 class="mb-lg-0">Select College <span class="text-danger">*</span></h6>
                             </div>
                             <div class="col-lg-8">
-                                <select class="form-control" id="collegeName" name="collegeId">
+                                <select class="form-control" id="collegeId" name="collegeId" onchange="collegeselect();">
+                                    <option value="">Select University</option>
 									<?php
 										$colleges = $collegesRepo->fetchby("");
 										foreach($colleges as $college){
@@ -188,13 +318,12 @@ Main part START -->
                             </div>
 							</div>
     
-					
-
-
-
-
-
                     </div>
+                    <?php
+                    }
+                    ?>
+                    
+                    
 
 
 					<div class="col-12 text-sm-end">
@@ -207,6 +336,14 @@ Main part START -->
 
 
 </body>
+<script>
+    function collegeselect(){
+        var collegeId = document.getElementById("collegeId").value;
+        var email = document.getElementById("email").value;
+        window.location.href = "counsler/newapplication.php?collegeId="+collegeId+"&student="+email;
+    }
+    
+</script>
 
 <!-- Mirrored from eduport.webestica.com/university-admission-form.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 May 2024 09:07:59 GMT -->
 </html>

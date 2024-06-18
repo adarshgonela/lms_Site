@@ -19,7 +19,7 @@
 								<i class="fas fa-search fs-6 "></i>
 							</button>
 							</form>
-					</div>
+					        </div>
 							<!-- Select option -->
 							<div class="col-md-3">
 								<!-- Short by filter -->
@@ -75,7 +75,7 @@
 												</div>
 												<div class="mb-0 ms-2">
 													<!-- Title -->
-													<h6 class="mb-0"><a href="#" class="stretched-link"><?php echo $studentName ?></a></h6>
+													<h6 class="mb-0"><a href="counsler/applications.php?student=<?php echo $studentEmail ?>" class="stretched-link"><?php echo $studentName ?></a></h6>
 													<!-- Address -->
 													<!--span class="text-body small"><i class="fas fa-fw fa-map-marker-alt me-1 mt-1"></i>Mumbai</span --> 
 												</div>

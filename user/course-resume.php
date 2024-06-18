@@ -16,7 +16,7 @@
 		const storedTheme = localStorage.getItem('theme')
  
 		const getPreferredTheme = () => {
-			if (storedTheme) {
+			if (storedTheme) {  
 				return storedTheme
 			}
 			return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'light'

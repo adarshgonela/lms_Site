@@ -4,7 +4,7 @@
 	<nav class="navbar navbar-expand-xl">
 		<div class="container">
 			<!-- Logo START -->
-			<a class="navbar-brand" href="index-2.html">
+			<a class="navbar-brand" href="user/dashboard.php">
 				<img class="light-mode-item navbar-brand-item" src="assets/images/logo.svg" alt="logo">
 				<img class="dark-mode-item navbar-brand-item" src="assets/images/logo-light.svg" alt="logo">
 			</a>
@@ -25,8 +25,17 @@
 
 			<!-- Profile START -->
 			<div class="dropdown ms-1 ms-lg-0">
-				<a class="avatar avatar-sm p-0" href="#" id="profileDropdown" role="button" data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
-					<img class="avatar-img rounded-circle" src="assets/images/avatar/01.jpg" alt="avatar">
+				<a class="avatar avatar-sm p-0" href="user/profile.php" id="profileDropdown" role="button" data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
+					<img class="avatar-img rounded-circle"   loading="lazy" src="
+								<?php
+								if($profile['image'] && $profile['image']!=""){
+								    echo "data:image/jpeg;base64,".base64_encode($profile['image']);
+								}
+								else{
+								    echo "assets/images/avatar/default.png";
+								}
+								?>
+					" alt="avatar">
 				</a>
 				<ul class="dropdown-menu dropdown-animation dropdown-menu-end shadow pt-3" aria-labelledby="profileDropdown">
 					<!-- Profile info -->
@@ -34,21 +43,29 @@
 						<div class="d-flex align-items-center">
 							<!-- Avatar -->
 							<div class="avatar me-3">
-								<img class="avatar-img rounded-circle shadow" src="assets/images/avatar/01.jpg" alt="avatar">
+								<img class="avatar-img rounded-circle shadow"  loading="lazy" src="
+								<?php
+								if($profile['image'] && $profile['image']!=""){
+								    echo "data:image/jpeg;base64,".base64_encode($profile['image']);
+								}
+								else{
+								    echo "assets/images/avatar/default.png";
+								}
+								?>
+								" alt="avatar">
 							</div>
 							<div>
-								<a class="h6" href="#">Lori Ferguson</a>
-								<p class="small m-0">example@gmail.com</p>
+								<p class="small m-0"><?php echo $user['name']; ?></p>
+								<p class="small m-0"><?php echo $user['email']; ?></p>
 							</div>
 						</div>
 					</li>
           <li> <hr class="dropdown-divider"></li>
 					<!-- Links -->
-					<li><a class="dropdown-item" href="#"><i class="bi bi-person fa-fw me-2"></i>Edit Profile</a></li>
-					<li><a class="dropdown-item" href="#"><i class="bi bi-gear fa-fw me-2"></i>Account Settings</a></li>
-					<li><a class="dropdown-item" href="#"><i class="bi bi-info-circle fa-fw me-2"></i>Help</a></li>
-					<li><a class="dropdown-item bg-danger-soft-hover" href="#"><i class="bi bi-power fa-fw me-2"></i>Sign Out</a></li>
+					<li><a class="dropdown-item" href="user/profile.php"><i class="bi bi-person fa-fw me-2"></i>Edit Profile</a></li>
 					<li> <hr class="dropdown-divider"></li>
+					<li><a class="dropdown-item bg-danger-soft-hover"  href="user/redirect/auth/logout.php"><i class="bi bi-power fa-fw me-2"></i>Sign Out</a></li>
+					
 					<!-- Dark mode options START -->
 					<li>
 						<div class="bg-light dark-mode-switch theme-icon-active d-flex align-items-center p-1 rounded mt-2">

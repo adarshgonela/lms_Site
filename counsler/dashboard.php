@@ -2,8 +2,7 @@
 <html lang="en">
 
 <head>
-	<title>Eduport - LMS, Education and Course Theme</title>
-
+	<?php include_once('common/title.php'); ?>
 	<!-- Meta Tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -107,7 +106,7 @@
 				<!-- Counter boxes START -->
 				<div class="row mb-4">
 					<!-- Counter item -->
-					<div class="col-sm-6 col-lg-4 mb-3 mb-lg-0">
+					<a href="counsler/applications.php" class="col-sm-6 col-lg-4 mb-3 mb-lg-0">
 						<div class="d-flex justify-content-center align-items-center p-4 bg-orange bg-opacity-15 rounded-3">
 							<span class="display-6 lh-1 text-orange mb-0"><i class="fas fa-tv fa-fw"></i></span>
 							<div class="ms-4">
@@ -118,9 +117,9 @@
 								<p class="mb-0 h6 fw-light">Applications</p>
 							</div>
 						</div>
-					</div>
+					</a>
 					<!-- Counter item -->
-					<div class="col-sm-6 col-lg-4 mb-3 mb-lg-0">
+					<a href="counsler/applications.php"  class="col-sm-6 col-lg-4 mb-3 mb-lg-0">
 						<div class="d-flex justify-content-center align-items-center p-4 bg-purple bg-opacity-15 rounded-3">
 							<span class="display-6 lh-1 text-purple mb-0"><i class="fas fa-clipboard-check fa-fw"></i></span>
 							<div class="ms-4">
@@ -131,9 +130,9 @@
 							</div>
 						</div>
 
-					</div>
+					</a>
 					<!-- Counter item -->
-					<div class="col-sm-6 col-lg-4 mb-3 mb-lg-0">
+					<a  href="counsler/colleges.php"  class="col-sm-6 col-lg-4 mb-3 mb-lg-0">
 						<div class="d-flex justify-content-center align-items-center p-4 bg-success bg-opacity-10 rounded-3">
 							<span class="display-6 lh-1 text-success mb-0"><i class="fas fa-medal fa-fw"></i></span>
 							<div class="ms-4">
@@ -143,7 +142,7 @@
 								<p class="mb-0 h6 fw-light">Total Colleges</p>
 							</div>
 						</div>
-					</div>
+					</a>
 				</div>
 				<!-- Counter boxes END -->
 
@@ -161,38 +160,7 @@ Inner part END -->
 </main>
 <!-- **************** MAIN CONTENT END **************** -->
 
-<!-- =======================
-Footer START -->
-<footer class="bg-dark p-3">
-	<div class="container">
-		<div class="row align-items-center">
-			<!-- Widget -->
-			<div class="col-md-4 text-center text-md-start mb-3 mb-md-0">
-				<!-- Logo START -->
-				<a href="index-2.html"> <img class="h-20px" src="assets/images/logo-light.svg" alt="logo"> </a>
-			</div>
-			
-			<!-- Widget -->
-			<div class="col-md-4 mb-3 mb-md-0">
-				<div class="text-center text-white text-primary-hover">
-					Copyrights ©2024 Eduport. Build by <a href="https://www.webestica.com/" target="_blank" class="text-white">Webestica</a>.
-				</div>
-			</div>
-			<!-- Widget -->
-			<div class="col-md-4">
-				<!-- Rating -->
-				<ul class="list-inline mb-0 text-center text-md-end">
-					<li class="list-inline-item ms-2"><a href="#"><i class="text-white fab fa-facebook"></i></a></li>
-					<li class="list-inline-item ms-2"><a href="#"><i class="text-white fab fa-instagram"></i></a></li>
-					<li class="list-inline-item ms-2"><a href="#"><i class="text-white fab fa-linkedin-in"></i></a></li>
-					<li class="list-inline-item ms-2"><a href="#"><i class="text-white fab fa-twitter"></i></a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
-</footer>
-<!-- =======================
-Footer END -->
+<?php include_once('common/footer.php'); ?>
 
 <!-- Back to top -->
 <div class="back-top"><i class="bi bi-arrow-up-short position-absolute top-50 start-50 translate-middle"></i></div>

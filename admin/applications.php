@@ -85,6 +85,7 @@
 		<link rel="stylesheet" type="text/css" href="assets/vendor/bootstrap-icons/bootstrap-icons.css">
 		<link rel="stylesheet" type="text/css" href="assets/vendor/apexcharts/css/apexcharts.css">
 		<link rel="stylesheet" type="text/css" href="assets/vendor/overlay-scrollbar/css/overlayscrollbars.min.css">
+		<link rel="stylesheet" type="text/css" href="assets/vendor/choices/css/choices.min.css">
 
 		<!-- Theme CSS -->
 		<link rel="stylesheet" type="text/css" href="assets/css/style.css">
@@ -107,7 +108,8 @@
 			</div>
 			
 			<?php
-			$monthsales = (int)$applicationsRepo->aggregate("count","id","");
+			
+			$monthsales = (int)$applicationsRepo->aggregate("count","id","appliedon like '%$month%'");
             $pending = (int)$applicationsRepo->aggregate("count","id","not `status` = 'approved'");
             $totalapplications = (int)$applicationsRepo->aggregate("count","id","");
 			
@@ -126,8 +128,8 @@
 				<!-- Earning item -->
 				<div class="col-sm-6 col-lg-4">
 					<div class="p-4 bg-purple bg-opacity-10 rounded-3">
-						<h6>To be paid
-							<a tabindex="0" class="h6 mb-0" role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="top" data-bs-content="After US royalty withholding tax" data-bs-original-title="" title="">
+						<h6>pending applications
+							<a tabindex="0" class="h6 mb-0" role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="top" data-bs-content="Pending application" data-bs-original-title="" title="">
 								<i class="bi bi-info-circle-fill small"></i>
 							</a>
 						</h6>
@@ -164,6 +166,7 @@
 						<!-- Search and select START -->
 						<div class="row g-3 align-items-center justify-content-between mb-4">
 							<!-- Content -->
+							<h5 class="text-sm-start mb-0 pt-0">Search</h4>
 							<div class="col-md-6">
 								
 									<input class="form-control pe-5 bg-transparent" type="search" name="search" placeholder="Search By Student Or College" aria-label="Search"  value="<?php
@@ -174,16 +177,35 @@
 							<div class="col-md-6">
 								<!-- Short by filter -->
 								
-									<select class="form-select js-choice" aria-label=".form-select-sm" name="student" selected="<?php
-                            if(isset($_REQUEST['student'])){echo $_REQUEST['student']; }?>">
+									<select class="form-select js-choice border-0 z-index-9 bg-transparent" aria-label=".form-select-sm" name="student">
                                     <option value=""> Select Student</option>
 									<?php
-										$students = $usersRepo->fetchby("`counsler` ='$email'");
+									    $selected = isset($_REQUEST['student']) ? $_REQUEST['student'] : '';
+										$students = $usersRepo->fetchby("");
 										foreach($students as $student){
 											$studentEmail = $student['email'];
 											$studentName = $student['name'];
+											$isSelected = ($selected == $studentEmail) ? 'selected' : '';
                                     ?>
-                                    <option value="<?php echo $studentEmail ?>"> <?php echo "$studentName"; ?> </option>
+                                    <option value="<?php echo $studentEmail ?>"  <?php echo $isSelected; ?>> <?php echo "$studentName"; ?> </option>
+									<?php } ?>
+									</select>
+							</div>
+							
+							<div class="col-md-6">
+								<!-- Short by filter -->
+								
+									<select class="form-select js-choice border-0 z-index-9 bg-transparent" aria-label=".form-select-sm" name="counsler">
+                                    <option value=""> Select Counsler</option>
+									<?php
+									    $selected = isset($_REQUEST['counsler']) ? $_REQUEST['counsler'] : '';
+										$students = $usersRepo->fetchby("role like 'counsler'");
+										foreach($students as $student){
+											$studentEmail = $student['email'];
+											$studentName = $student['name'];
+											$isSelected = ($selected == $studentEmail) ? 'selected' : '';
+                                    ?>
+                                    <option value="<?php echo $studentEmail ?>" <?php echo $isSelected; ?>> <?php echo "$studentName"; ?> </option>
 									<?php } ?>
 									</select>
 							</div>
@@ -191,18 +213,41 @@
 							<div class="col-md-6">
 								<!-- Short by filter -->
 								
-									<select class="form-select js-choice" aria-label=".form-select-sm" name="college">
-                                    <option value=""> Select College</option>
+									<select class="form-select js-choice border-0 z-index-9 bg-transparent" aria-label=".form-select-sm" name="college">
+                                        <option value="">Select College</option>
+                                        <?php
+                                            $selectedCollege = isset($_REQUEST['college']) ? $_REQUEST['college'] : '';
+                                            $colleges = $collegesRepo->fetchBy("");
+                                            foreach ($colleges as $college) {
+                                                $collegeId = $college['id'];
+                                                $collegeName = $college['name'];
+                                                $isSelected = ($collegeId == $selectedCollege) ? 'selected' : '';
+                                        ?>
+                                        <option value="<?php echo $collegeId; ?>" <?php echo $isSelected; ?>><?php echo $collegeName; ?></option>
+                                        <?php } ?>
+                                    </select>
+
+							</div>
+							<div class="col-md-6">
+								<!-- Short by filter -->
+								
+									<select class="form-select js-choice border-0 z-index-9 bg-transparent" aria-label=".form-select-sm" name="status">
+                                    <option value="">Select Status</option>
 									<?php
-										$colleges = $collegesRepo->fetchBy("");
-										foreach($colleges as $college){
-											$collegeId = $college['id'];
-											$collegeName = $college['name'];
+										$selected = isset($_REQUEST['status']) ? $_REQUEST['status'] : '';
+										foreach($appStatusList as $appstatus){
+											$isSelected = ($selected == $appstatus) ? 'selected' : '';
                                     ?>
-                                    <option value="<?php echo $collegeId ?>"> <?php echo "$collegeName"; ?> </option>
+                                    <option value="<?php echo $appstatus ?>" <?php echo $isSelected; ?>> <?php echo "$appstatus"; ?> </option>
 									<?php } ?>
 									</select>
 							</div>
+							<!--<hr style="height:0px;border-top: 8px solid #000;" class"mt-0 mb-0 pt-0 pb-0">-->
+							<h5 class="text-sm-start  mb-0 mt-4 pt-0">Sort</h4>
+							<?php
+							$sfields = ["uname"=>"University","cname"=>"Counsler","sname"=>"Student"];
+							include("common/sort.php");
+							?>
 							<div class="col-md-6">
 							<button class="col-md-12 btn btn-purple" type="submit">search</button>
 							</div>
@@ -212,136 +257,47 @@
 						
 						<!-- Search and select END -->
 					    
-					    
-						<table class="table table-dark-gray align-middle p-4 mb-0 table-hover">
-							<!-- Table head -->
-							<thead>
-								<tr>
-									<th scope="col" class="border-0 rounded-start">Application ID</th>
-									<th scope="col" class="border-0">College</th>
-									<th scope="col" class="border-0">Student</th>
-									<th scope="col" class="border-0">Counsler</th>
-									
-									<th scope="col" class="border-0">Date</th>
-									<!--<th scope="col" class="border-0">application Method</th>-->
-									<th scope="col" class="border-0">Amount</th>
-									<th scope="col" class="border-0">Status</th>
-									<th scope="col" class="border-0 rounded-end">Action</th>
-								</tr>
-							</thead>
-
-							<!-- Table body START -->
-							<tbody>
-							    
-							    <?php
-
-                                if(isset($_REQUEST['search']) && $_REQUEST['search']!=""){
-											$search = $_REQUEST['search'];
-											$applications = $applicationsRepo->fetchBy("`counsler` = '$email' AND (`email` LIKE '%$search%' or `college` LIKE '%$search%')");
-								}
-								else if(isset($_REQUEST['student']) && $_REQUEST['student']!=""){
-									$student = $_REQUEST['student'];
-									$applications = $applicationsRepo->fetchBy("`counsler` = '$email' AND `email` = '$student'");
-									
-								}
-								else if(isset($_REQUEST['college']) && $_REQUEST['college']!=""){
-									$college = $_REQUEST['college'];
-									$applications = $applicationsRepo->fetchBy("`counsler` = '$email' AND `collegeId` = '$college'");
-									
-								}
-								else{
-									$applications = $applicationsRepo->fetchBy("`counsler` = '$email'");
-								}
-                                foreach($applications as $application){
-                            	$collegeName = $application['college'];
-                            	$applicationid = "#".$application['id'];
-                             	
-                               	$applicationdate = $application['date'];
-                            	$applicationamount = $application['fees'];
-                             	$applicationstatus = $application['status'];
-                             	$student = $application['email'];
-                             	$counsler = $application['counsler'];
-                             	
-                                ?>
-							
-								<!-- Table row -->
-								<tr>
-									<!-- Table data -->
-									<td><?php echo $applicationid ?></td>
-									
-									<!-- Table data -->
-									<td>
-										<h6 class="table-responsive-title mb-0"><a href="#"><?php echo $collegeName ?></a></h6>
-									</td>
-									<!-- Table data -->
-									<td>
-										<h6 class="table-responsive-title mb-0"><a href="#"><?php echo $student ?></a></h6>
-									</td>
-
-									<!-- Table data -->
-									<td>
-										<h6 class="table-responsive-title mb-0"><a href="#"><?php echo $counsler ?></a></h6>
-									</td>
-
-									<!-- Table data -->
-									<td><?php echo $applicationdate ?></td>
-
-									<!-- Table data -->
-									<!--<td>-->
-									<!--	<img src="assets/images/client/mastercard.svg" class="h-50px" alt="">-->
-									<!--</td>-->
-
-									<!-- Table data -->
-									<td>$<?php echo $applicationamount ?>
-										<!-- Dropdown icon -->
-										<a href="#" class="h6 mb-0" role="button" id="dropdownShare1" data-bs-toggle="dropdown" aria-expanded="false">
-											<i class="bi bi-info-circle-fill"></i>
-										</a>
-										<!-- Dropdown items -->
-										<ul class="dropdown-menu dropdown-w-sm dropdown-menu-end min-w-auto shadow rounded" aria-labelledby="dropdownShare1">
-											<li>
-												<div class="d-flex justify-content-between">
-													<span class="small">Commission</span>
-													<span class="h6 mb-0 small">$86</span>
-												</div>
-												<hr class="my-1"> <!-- Divider -->
-											</li>
-
-											<li>
-												<div class="d-flex justify-content-between">
-													<span class="me-4 small">Us royalty withholding</span>
-													<span class="text-danger small">-$0.00</span>
-												</div>
-												<hr class="my-1"> <!-- Divider -->
-											</li>
-											
-											<li>
-												<div class="d-flex justify-content-between">
-													<span class="small">Earning</span>
-													<span class="h6 mb-0 small">$86</span>
-												</div>
-											</li>
-										</ul>
-									</td>
-
-									<!-- Table data -->
-									<td>
-										<div class="badge bg-success bg-opacity-10 text-success"><?php echo $applicationstatus ?></div>
-									</td>
-
-									<!-- Table data -->
-									<td>
-										<a href="#" class="btn btn-primary-soft btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Download" aria-label="Download">
-											<i class="bi bi-download"></i>
-										</a>
-									</td>
-								</tr>
+					    <?php
+					        $filter = [];	
+                            
+							if(isset($_REQUEST['student']) && $_REQUEST['student']!=""){
+								$student = $_REQUEST['student'];
+								$filter['sid'] = $student;
 								
-								<?php } ?>
-
-							</tbody>
-							<!-- Table body END -->
-						</table>
+							}
+							if(isset($_REQUEST['college']) && $_REQUEST['college']!=""){
+								$college = $_REQUEST['college'];
+								$filter['uid'] = $college;
+								
+							}
+							if(isset($_REQUEST['counsler']) && $_REQUEST['counsler']!=""){
+								$counsler = $_REQUEST['counsler'];
+								$filter['cid'] = $counsler;
+								
+							}
+							if(isset($_REQUEST['status']) && $_REQUEST['status']!=""){
+								$key = $_REQUEST['status'];
+								$filter['status'] = $key;
+								
+							}
+							if(isset($_REQUEST['search']) && $_REQUEST['search']!=""){
+							    $filter = "(`email` LIKE '%$search%' or `college` LIKE '%$search%')";
+							}
+							
+							
+							$data = $applicationsRepo->fetchBy($filter);
+							foreach($data as $i=>$d){
+                              $data[$i]['action'] = '<a href="admin/application.php?id='.$d['id'].'" target="_blank" class="btn btn-primary-soft btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="View" aria-label="View">
+											<i class="bi bi-eye-fill"></i>
+										</a>';
+							  $data[$i]['status'] = '<div class="badge bg-success bg-opacity-10 text-success">'.$d['status'].'</div>';
+                            }
+							$columns = ["Application Id" => "id","Student" => "sname","Counsler" => "cname" ,"University" => "uname","Fees" => "fees", "Applied On"=>"appliedon", "Status" => "status" , "Action" => "action"];
+								
+					    
+					    ?>
+					    <br>
+						<?php include "common/table.php"; ?>
 					</div>
 					<!-- Table END -->
 				</div>
@@ -384,9 +340,11 @@
 	<script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
 	<!-- Vendors -->
+	<script src="assets/vendor/choices/js/choices.min.js"></script>
 	<script src="assets/vendor/purecounterjs/dist/purecounter_vanilla.js"></script>
 	<script src="assets/vendor/apexcharts/js/apexcharts.min.js"></script>
 	<script src="assets/vendor/overlay-scrollbar/js/overlayscrollbars.min.js"></script>
+	<script src="assets/vendor/aos/aos.js"></script>
 
 	<!-- Template Functions -->
 	<script src="assets/js/functions.js"></script>

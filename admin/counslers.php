@@ -115,12 +115,13 @@
 
 					<!-- Search bar -->
 					<div class="col-md-8">
-						<form class="rounded position-relative">
-							<input class="form-control bg-transparent" type="search" name="search" placeholder="Search" aria-label="Search">
-							<button class="bg-transparent p-2 position-absolute top-50 end-0 translate-middle-y border-0 text-primary-hover text-reset" type="submit">
+							<form class="rounded position-relative">
+									<input class="form-control pe-5 bg-transparent" name="search" type="search" placeholder="Search" aria-label="Search" value="<?php
+                            if(isset($_REQUEST['search'])){echo $_REQUEST['search']; }?>">
+									<button class="bg-transparent p-2 position-absolute top-50 end-0 translate-middle-y border-0 text-primary-hover text-reset" type="submit">
 								<i class="fas fa-search fs-6 "></i>
 							</button>
-						</form>
+							</form>
 					</div>
 
 					<!-- Tab buttons -->
@@ -165,14 +166,14 @@
                                 $counslers = $usersRepo->fetchby("`role` Like 'Counsler'");
                             }
 
-                            // $counslers = $usersRepo->fetchby("`role` Like 'Counsler'");
+                           
                             foreach($counslers as $counsler){
                             	$counslerEmail = $counsler['email'];
                             	$counslerName = $counsler['name'];
                             	$mobile = $counsler['mobile'];
                         		$totalStudents = (int)$usersRepo->aggregate("count","counsler","`counsler`='$counslerEmail'");
-                        		$totalApps = (int)$applicationsRepo->aggregate("count","counsler","`counsler`='$counslerEmail'");
-                        		$totalpayments = (int)$applicationsRepo->aggregate("sum","fees","`counsler`='$counslerEmail'");
+                        		$totalApps = (int)$applicationsRepo->aggregate("count","cid","`cid`='$counslerEmail'");
+                        		$totalpayments = (int)$applicationsRepo->aggregate("sum","fees","`cid`='$counslerEmail'");
 
 
                             // 	$EnrolledDate = $counsler['date'];
@@ -191,7 +192,7 @@
 											</div>
 											<!-- Info -->
 											<div class="ms-0 ms-sm-2 mt-2 mt-sm-0">
-												<h5 class="mb-0"><a href="#"><?php echo $counslerName ?></a></h5>
+												<h5 class="mb-0"><a href="admin/applications.php?counsler=<?php echo $counslerEmail ?>"><?php echo $counslerName ?></a></h5>
 												<p class="mb-0 small"><?php echo $mobile ?></p>
 											</div>
 										</div>

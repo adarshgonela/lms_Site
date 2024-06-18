@@ -2,8 +2,7 @@
 <html lang="en">
 
 <head>
-	<title>Eduport - LMS, Education and Course Theme</title>
-
+<?php include_once('common/title.php'); ?>
 	<!-- Meta Tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">

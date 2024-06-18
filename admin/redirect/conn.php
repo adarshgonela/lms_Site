@@ -15,6 +15,7 @@ $logoutLimit = 10;
 $time = date('H:i');
 $date = date('Y-m-d');
 $datetime = date('Y-m-d');
+$month = date('Y-m');
 
 include_once('repository.php');
 

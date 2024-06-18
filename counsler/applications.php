@@ -2,8 +2,7 @@
 <html lang="en">
 
 <head>
-	<title>Eduport - LMS, Education and Course Theme</title>
-
+	<?php include_once('common/title.php'); ?>
 	<!-- Meta Tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -133,12 +132,14 @@
 									<select class="form-select js-choice border-0 z-index-9 bg-transparent" aria-label=".form-select-sm" name="student">
                                     <option value=""> Select Student</option>
 									<?php
+									    $selected = isset($_REQUEST['student']) ? $_REQUEST['student'] : '';
 										$students = $usersRepo->fetchby("`counsler` ='$email'");
 										foreach($students as $student){
 											$studentEmail = $student['email'];
 											$studentName = $student['name'];
+											$isSelected = ($selected == $studentEmail) ? 'selected' : '';
                                     ?>
-                                    <option value="<?php echo $studentEmail ?>"> <?php echo "$studentName"; ?> </option>
+                                    <option value="<?php echo $studentEmail ?>"  <?php echo $isSelected; ?>> <?php echo "$studentName"; ?> </option>
 									<?php } ?>
 									</select>
 							</div>
@@ -174,7 +175,7 @@
 								<thead>
 									<tr>
 										<th scope="col" class="border-0 rounded-start">Student</th>
-										<th scope="col" class="border-0">College</th>
+										<th scope="col" class="border-0">University</th>
 										<th scope="col" class="border-0">Application Id</th>
 										<th scope="col" class="border-0">Fees</th>
 										<th scope="col" class="border-0 rounded-end">Action</th>
@@ -185,52 +186,48 @@
 								<tbody>
 									<!-- Table item -->
 									<?php
-										if(isset($_REQUEST['search']) && $_REQUEST['search']!=""){
-											$search = $_REQUEST['search'];
-											$applications = $applicationsRepo->fetchBy("`counsler` = '$email' AND (`email` LIKE '%$search%' or `college` LIKE '%$search%')");
-										}
-										else if(isset($_REQUEST['student']) && $_REQUEST['student']!=""){
-											$student = $_REQUEST['student'];
-											$applications = $applicationsRepo->fetchBy("`counsler` = '$email' AND `email` = '$student'");
-											
-										}
-										else if(isset($_REQUEST['college']) && $_REQUEST['college']!=""){
-											$college = $_REQUEST['college'];
-											$applications = $applicationsRepo->fetchBy("`counsler` = '$email' AND `collegeId` = '$college'");
-											
-										}
-										else{
-											$applications = $applicationsRepo->fetchBy("`counsler` = '$email'");
-										}
+									    $filter = [];	
+                                        $filter['cid'] = $email;
+            							if(isset($_REQUEST['student']) && $_REQUEST['student']!=""){
+            								$student = $_REQUEST['student'];
+            								$filter['sid'] = $student;
+            								
+            							}
+            							if(isset($_REQUEST['college']) && $_REQUEST['college']!=""){
+            								$college = $_REQUEST['college'];
+            								$filter['uid'] = $college;
+            								
+            							}
+            							if(isset($_REQUEST['counsler']) && $_REQUEST['counsler']!=""){
+            								$counsler = $_REQUEST['counsler'];
+            								$filter['cid'] = $counsler;
+            								
+            							}
+            							if(isset($_REQUEST['search']) && $_REQUEST['search']!=""){
+            							    $filter = "`cid`='$email' AND (`email` LIKE '%$search%' or `college` LIKE '%$search%')";
+            							}
+            							
+            							$applications = $applicationsRepo->fetchBy($filter);
+										
 											foreach($applications as $application){
-												$college = $application['college'];
+												$college = $application['uname'];
 												$id = "A0".$application['id'];
 												$fees = $application['fees'];
 
-
-
 									?>
 									<tr>
-										<td><?php echo $application['email']; ?></td>
+										<td><?php echo $application['sname']; ?></td>
 										<!-- Table data -->
 										<td>
 											<div class="d-flex align-items-center">
 												<!-- Image -->
-												<div class="w-100px">
-													<img src="assets/images/courses/4by3/08.jpg" class="rounded" alt="">
-												</div>
-												<div class="mb-0 ms-2">
+												
+												
 													<!-- Title -->
 													<h6><a href="#"><?php echo $college; ?></a></h6>
 													<!-- Info -->
-													<div class="overflow-hidden">
-														<h6 class="mb-0 text-end">85%</h6>
-														<div class="progress progress-sm bg-primary bg-opacity-10">
-															<div class="progress-bar bg-primary aos" role="progressbar" data-aos="slide-right" data-aos-delay="200" data-aos-duration="1000" data-aos-easing="ease-in-out" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
-															</div>
-														</div>
-													</div>
-												</div>
+													
+												
 											</div>
 										</td>
 
@@ -242,7 +239,7 @@
 
 										<!-- Table data -->
 										<td>
-											<a href="#" class="btn btn-sm btn-primary-soft me-1 mb-1 mb-md-0"><i class="bi bi-play-circle me-1"></i>Continue</a>
+											<a href="counsler/application.php?id=<?php echo $application['id']; ?>" target="_blank"  class="btn btn-sm btn-primary-soft me-1 mb-1 mb-md-0"><i class="bi bi-eye-fill circle me-1"></i></a>
 										</td>
 									</tr>
 
@@ -288,38 +285,8 @@ Page content END -->
 </main>
 <!-- **************** MAIN CONTENT END **************** -->
 
-<!-- =======================
-Footer START -->
-<footer class="bg-dark p-3">
-	<div class="container">
-		<div class="row align-items-center">
-			<!-- Widget -->
-			<div class="col-md-4 text-center text-md-start mb-3 mb-md-0">
-				<!-- Logo START -->
-				<a href="index-2.html"> <img class="h-20px" src="assets/images/logo-light.svg" alt="logo"> </a>
-			</div>
-			
-			<!-- Widget -->
-			<div class="col-md-4 mb-3 mb-md-0">
-				<div class="text-center text-white text-primary-hover">
-					Copyrights ©2024 Eduport. Build by <a href="https://www.webestica.com/" target="_blank" class="text-white">Webestica</a>.
-				</div>
-			</div>
-			<!-- Widget -->
-			<div class="col-md-4">
-				<!-- Rating -->
-				<ul class="list-inline mb-0 text-center text-md-end">
-					<li class="list-inline-item ms-2"><a href="#"><i class="text-white fab fa-facebook"></i></a></li>
-					<li class="list-inline-item ms-2"><a href="#"><i class="text-white fab fa-instagram"></i></a></li>
-					<li class="list-inline-item ms-2"><a href="#"><i class="text-white fab fa-linkedin-in"></i></a></li>
-					<li class="list-inline-item ms-2"><a href="#"><i class="text-white fab fa-twitter"></i></a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
-</footer>
-<!-- =======================
-Footer END -->
+
+<?php include_once('common/footer.php'); ?>
 
 <!-- Back to top -->
 <div class="back-top"><i class="bi bi-arrow-up-short position-absolute top-50 start-50 translate-middle"></i></div>

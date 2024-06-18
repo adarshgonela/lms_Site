@@ -36,6 +36,9 @@ $current_file = explode(".",basename($_SERVER['PHP_SELF']))[0];
 
                 <!-- Menu item 4 -->
 				<li class="nav-item"> <a class="nav-link <?php echo $current_file=='applications'? 'active' :'' ;?>" href="admin/applications.php"><i class="fas fa-file fa-fw me-2"></i>Applications</a></li>
+				
+				<!-- Menu item 4 -->
+				<li class="nav-item"> <a class="nav-link <?php echo $current_file=='universities'? 'active' :'' ;?>" href="admin/universities.php"><i class="fas fa-university fa-fw me-2"></i>Universities</a></li>
 
 				<!-- Menu item 5 -->
 				<li class="nav-item"> <a class="nav-link <?php echo $current_file=='reviews'? 'active' :'' ;?>" href="admin/reviews.php"><i class="far fa-comment-dots fa-fw me-2"></i>Reviews</a></li>
@@ -114,10 +117,13 @@ $current_file = explode(".",basename($_SERVER['PHP_SELF']))[0];
 						<!-- Top search START -->
 						<div class="nav my-3 my-xl-0 flex-nowrap align-items-center">
 							<div class="nav-item w-100">
-								<form class="position-relative">
-									<input class="form-control pe-5 bg-secondary bg-opacity-10 border-0" type="search" placeholder="Search" aria-label="Search">
-									<button class="bg-transparent px-2 py-0 border-0 position-absolute top-50 end-0 translate-middle-y" type="submit"><i class="fas fa-search fs-6 text-primary"></i></button>
-								</form>
+								<form class="rounded position-relative" action="admin/students.php">
+									<input class="form-control pe-5 bg-transparent" name="search" type="search" placeholder="Search" aria-label="Search" value="<?php
+                                    if(isset($_REQUEST['search'])){echo $_REQUEST['search']; }?>">
+        									<button class="bg-transparent p-2 position-absolute top-50 end-0 translate-middle-y border-0 text-primary-hover text-reset" type="submit">
+        								<i class="fas fa-search fs-6 "></i>
+        							</button>
+        						</form>
 							</div>
 						</div>
 						<!-- Top search END -->

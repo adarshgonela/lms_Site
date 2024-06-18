@@ -116,10 +116,9 @@
 					<!-- Search bar -->
 					<div class="col-md-8">
 						<form class="rounded position-relative">
-							<input class="form-control bg-transparent" type="search" name="search" placeholder="Search" aria-label="Search" value="<?php
-
+									<input class="form-control pe-5 bg-transparent" name="search" type="search" placeholder="Search" aria-label="Search" value="<?php
                             if(isset($_REQUEST['search'])){echo $_REQUEST['search']; }?>">
-							<button class="bg-transparent p-2 position-absolute top-50 end-0 translate-middle-y border-0 text-primary-hover text-reset" type="submit">
+									<button class="bg-transparent p-2 position-absolute top-50 end-0 translate-middle-y border-0 text-primary-hover text-reset" type="submit">
 								<i class="fas fa-search fs-6 "></i>
 							</button>
 						</form>
@@ -175,8 +174,8 @@
                             	$studentName = $student['name'];
                              	$studentMobile = $student['mobile'];
                              	$studentcounsler = $student['counsler'];
-                                $totalApps = (int)$applicationsRepo->aggregate("count","id","`email`='$studentEmail'");
-                                $totalpayments = (int)$applicationsRepo->aggregate("sum","fees","`email`='$studentEmail'");
+                                $totalApps = (int)$applicationsRepo->aggregate("count","id","`sid`='$studentEmail'");
+                                $totalpayments = (int)$applicationsRepo->aggregate("sum","fees","`sid`='$studentEmail'");
 
                              	$EnrolledDate = $student['date'];
                             	
@@ -194,15 +193,19 @@
 											</div>
 											<!-- Info -->
 											<div class="ms-0 ms-sm-2 mt-2 mt-sm-0">
-												<h5 class="mb-0"><a href="#"><?php echo $studentName ?></a></h5>
+												<h5 class="mb-0"><a href="admin/applications.php?student=<?php echo $studentEmail ?>"><?php echo $studentName ?></a></h5>
 												<span class="text-body small"><i class="fas fa-fw fa-map-marker-alt me-1 mt-1"></i><?php echo $studentMobile ?></span>
 											</div>
 										</div>
 
 										<!-- Edit dropdown -->
 										<div class="dropdown text-end">
-											<a href="admin/student.php?student=<?php echo $studentEmail ?>" target="_blank"class="btn btn-sm btn-light btn-round small mb-0" role="button" id="dropdownShare2">
+											<a href="admin/student.php?student=<?php echo $studentEmail ?>" target="_blank"class="btn btn-sm btn-light btn-round small mb-0 m-1" role="button" id="dropdownShare2">
 												<i class="bi bi-eye-fill fw-bold"></i>
+											</a>
+											
+											<a href="admin/newapplication.php?student=<?php echo $studentEmail ?>" target="_blank"class="btn btn-sm btn-light btn-round small mb-0 m-1" role="button" id="dropdownShare2">
+												<i class="bi bi-send-fill fw-bold"></i>
 											</a>
 											
 										</div>

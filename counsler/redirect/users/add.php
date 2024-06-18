@@ -13,11 +13,13 @@ if($user){
 
 $_REQUEST['name'] = $_REQUEST['fname']." ".$_REQUEST['lname'];
 $_REQUEST['date'] = $date;
-$_REQUEST['counsler'] = $_SESSION['email'];
+$counsler =  $_SESSION['email'];
+$_REQUEST['counsler'] = $counsler;
+$_REQUEST['cname'] = $usersRepo->fetch($counsler)['name'];
 $_REQUEST['status'] = "verified";
 $_REQUEST['password'] = password_hash($_REQUEST['password'], PASSWORD_BCRYPT);
 
-$usersRepo->save($_REQUEST,['email','password','name','counsler','mobile','status','date']);
+$usersRepo->save($_REQUEST,['email','password','name','counsler','cname','mobile','status','date']);
 
 $profileRepo->save($_REQUEST,['email','college','passingYear','dob','address', 'cgpa']);
 

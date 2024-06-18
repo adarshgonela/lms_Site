@@ -114,7 +114,6 @@
 
 					<?php include "common/applications.php"; ?>
 					
-<<<<<<< HEAD:user/mycourses.php
 					<!-- Card header END -->
 
 					<!-- Card body START -->
@@ -250,9 +249,6 @@
 						<!-- Pagination END -->
 					</div>
 					<!-- Card body START -->
-=======
-					<!-- Card body END -->
->>>>>>> 2b9f47f13d88c7e08446cd3eeae8c39eb7002ccb:user/applications.php
 				</div>
 			<!-- Main content END -->
 			</div><!-- Row END -->

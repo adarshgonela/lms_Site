@@ -136,7 +136,7 @@ class Repository {
 
         $result = $this->conn->query($query);
         if (!$result) {
-            return NULL;
+            return $result;
         }
 
         $data = $result->fetch_assoc();

@@ -113,7 +113,7 @@
 							<div class="ms-4">
 								<div class="d-flex">
 									
-									<h5 class="purecounter mb-0 fw-bold" data-purecounter-start="0" data-purecounter-end="<?php echo $appliedColleges; ?>"	data-purecounter-delay="100">0</h5>
+									<h5 class="purecounter mb-0 fw-bold" data-purecounter-start="0" data-purecounter-end="<?php echo $appliedcourses; ?>"	data-purecounter-delay="100">0</h5>
 								</div>
 								<p class="mb-0 h6 fw-light">Total Courses</p>
 							</div>
@@ -125,7 +125,7 @@
 							<span class="display-6 lh-1 text-purple mb-0"><i class="fas fa-clipboard-check fa-fw"></i></span>
 							<div class="ms-4">
 								<div class="d-flex">
-									<h5 class="purecounter mb-0 fw-bold" data-purecounter-start="0" data-purecounter-end="<?php echo $availablecolleges; ?>"	data-purecounter-delay="200">0</h5>
+									<h5 class="purecounter mb-0 fw-bold" data-purecounter-start="0" data-purecounter-end="<?php echo  $totalcourses; ?>"	data-purecounter-delay="200">0</h5>
 								</div>
 								<p class="mb-0 h6 fw-light">Available Courses</p>
 							</div>
@@ -191,10 +191,10 @@
 								<!-- Table head -->
 								<thead>
 									<tr>
-										<th scope="col" class="border-0 rounded-start">College</th>
-										<th scope="col" class="border-0">Application Id</th>
-										<th scope="col" class="border-0">Fees</th>
-										<th scope="col" class="border-0 rounded-end">Action</th>
+										<th scope="col" class="border-0 rounded-start">Course Name</th>
+										<th scope="col" class="border-0">Tutor name</th>
+										<th scope="col" class="border-0">Duration</th>
+										<th scope="col" class="border-0 rounded-end">Total Lectures</th>
 									</tr>
 								</thead>
 
@@ -203,12 +203,12 @@
 									<!-- Table item -->
 									<?php
 
-											$applications = $applicationsRepo->fetchBy();
-											foreach($applications as $application){
-												$college = $application['college'];
-												$id = "A0".$application['id'];
-												$fees = $application['fees'];
-												$status =$application['status'];
+											$mycourses = $mycoursesRepo->fetchBy();
+											foreach($mycourses as $mycourse){
+												$name = $mycourse['name'];
+												$tname = $mycourse['tname'];
+												$duration = $mycourse['duration'];
+												$totallectures =$mycourse['totallectures'];
 
 									?>
 									<tr>
@@ -216,33 +216,33 @@
 										<td>
 											<div class="d-flex align-items-center">
 												<!-- Image -->
-												<div class="w-100px">
+												<!-- <div class="w-100px">
 													<img src="assets/images/courses/4by3/08.jpg" class="rounded" alt="">
-												</div>
+												</div> -->
 												<div class="mb-0 ms-2">
 													<!-- Title -->
-													<h6><a href="#"><?php echo $college; ?></a></h6>
+													<h6><a href="#"><?php echo $name; ?></a></h6>
 													<!-- Info -->
-													<div class="overflow-hidden">
+													<!-- <div class="overflow-hidden">
 														<h6 class="mb-0 text-end">85%</h6>
 														<div class="progress progress-sm bg-primary bg-opacity-10">
 															<div class="progress-bar bg-primary aos" role="progressbar" data-aos="slide-right" data-aos-delay="200" data-aos-duration="1000" data-aos-easing="ease-in-out" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
 															</div>
 														</div>
-													</div>
+													</div> -->
 												</div>
 											</div>
 										</td>
 
 										<!-- Table data -->
-										<td><?php echo $id; ?></td>
+										<td><?php echo $tname; ?></td>
 
 										<!-- Table data -->
-										<td><?php echo $fees; ?></td>
+										<td><?php echo $duration; ?></td>
 
 										<!-- Table data -->
 										<td>
-											<div class="btn btn-sm btn-primary-soft me-1 mb-1 mb-md-0"><?php echo $status ?></div>
+											<?php echo $totallectures ?>
 										</td>
 											
 										</td>

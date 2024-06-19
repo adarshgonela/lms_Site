@@ -3,7 +3,7 @@
 Page Banner START -->
 <?php
 	$appliedcourses = (int)$mycoursesRepo->aggregate("count","course","`email` = '$email'");
-	$availablecourses = (int)$collegesRepo->aggregate("count","id","");
+	//$availablecourses = (int)$collegesRepo->aggregate("count","id","");
 	$acceptedcourses = (int)$mycoursesRepo->aggregate("count","course","`email` = '$email' AND `status`= 'approved'");
 	$totalcourses = (int)$coursesRepo->aggregate("count","id","");
 ?>
@@ -53,9 +53,9 @@ Page Banner START -->
 								</ul>
 							</div>
 							<!-- Button -->
-							<div class="mt-2 mt-sm-0">
-								<a href="user/applications.php" class="btn btn-outline-primary mb-0">View my Applications</a>
-							</div>
+							<!-- <div class="mt-2 mt-sm-0">
+								<a href="user/mycourses.php" class="btn btn-outline-primary mb-0">View All Courses</a>
+							</div> -->
 						</div>
 					</div>
 				</div>

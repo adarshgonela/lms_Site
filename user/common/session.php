@@ -22,7 +22,8 @@
    
 
     $email = $_SESSION['email'];
-   // $userid = $_SESSION['id'];
+    // echo $email;
+    // $userid = $_SESSION['id'];
     $user = $usersRepo->fetch($email);
     $profile = $profileRepo->fetch($email);
 

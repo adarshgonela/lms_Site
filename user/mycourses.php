@@ -2,13 +2,13 @@
 <html lang="en">
 
 <head>
-		<?php include_once('common/title.php'); ?>
+	<?php include_once('common/title.php'); ?>
 
 	<!-- Meta Tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="author" content="Webestica.com">
-	<meta name="description" content="Eduport- LMS, Education and Course Theme">
+	<meta name="author" content="">
+	<meta name="description" content="">
 	<base href="../">
 
 	<!-- Dark mode -->
@@ -40,7 +40,7 @@
 				const btnToActive = document.querySelector(`[data-bs-theme-value="${theme}"]`)
 				const svgOfActiveBtn = btnToActive.querySelector('.mode-switch use').getAttribute('href')
 
-				document.querySelectorAll('[data-bs-theme-value]').forEach(elements => {
+				document.querySelectorAll('[data-bs-theme-value]').forEach(element => {
 					element.classList.remove('active')
 				})
 
@@ -112,7 +112,7 @@
 
 					<!-- Card body START -->
 
-					<?php include "common/applications.php"; ?>
+					
 					
 					<!-- Card header END -->
 

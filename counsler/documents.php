@@ -115,50 +115,10 @@
 
 					<!-- Card body START -->
 					<div class="card-body">
-					    <h6>Search Student</h6>
-					        <form>
-					            <div class="row">
-        					    <div class="col-md-6 mt-2">
-								<!-- Short by filter -->
-								
-									<select class="form-select js-choice border-0 z-index-9 bg-transparent" aria-label=".form-select-sm" name="student">
-                                    <option value=""> Select Student</option>
-									<?php
-									    $selected = isset($_REQUEST['student']) ? $_REQUEST['student'] : '';
-										$students = $usersRepo->fetchby("`counsler`='$email'");
-										foreach($students as $student){
-											$studentEmail = $student['email'];
-											$studentName = $student['name'];
-											$isSelected = ($selected == $studentEmail) ? 'selected' : '';
-                                    ?>
-                                    <option value="<?php echo $studentEmail ?>"  <?php echo $isSelected; ?>> <?php echo "$studentName"; ?> </option>
-									<?php } ?>
-									</select>
-							    </div>
-        						
-    							<div class="col-md-6 mt-2">
-    							<button class="col-md-12 btn btn-purple" type="submit">Search</button>
-    							</div>
-    						</div>
-						</form>
-        						
-						<?php
-									        if(isset($_REQUEST['student'])){
-						?>
-						
-						<hr>
-
 					    
 					        <h6>New Document</h6>
 					        <form  action="user/redirect/documents/add.php" method="post" enctype="multipart/form-data">
 					            <div class="row">
-					              
-					            <div class="col-md-6 mt-2">
-        								
-    									<input type="text" class="form-control" name="student"  value="<?php echo $_REQUEST['student']; ?>" readonly>
-        							
-        						</div>
-        						
         					    <div class="col-md-6 mt-2">
         								<!-- Short by filter -->
         								
@@ -187,9 +147,7 @@
     							</div>
     						</div>
 						</form>
-        						<?php
-        						}
-        						?>
+        						
 						
 						
 						<hr>
@@ -240,15 +198,8 @@
 								<tbody>
 									<!-- Table item -->
 									<?php
-									        if(isset($_REQUEST['student'])){
-    									        $email = $_REQUEST['student'];
-    
-    											$documents = $documentsRepo->fetchBy("`email` = '$email'");
-									        }
-									        
-									        else{
-									            $documents = [];
-									        }
+
+											$documents = $documentsRepo->fetchBy("`email` = '$email'");
 											foreach($documents as $document){
 												$type = $document['type'];
 												$name = $document['name'];

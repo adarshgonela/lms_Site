@@ -21,9 +21,9 @@ include_once('repository.php');
 $usersRepo = new Repository('users','email',$conn);
 $profileRepo = new Repository('profile','email',$conn);
 $coursesRepo = new Repository('courses','id',$conn);
-$collegesRepo = new Repository('colleges','id',$conn);
+//$collegesRepo = new Repository('colleges','id',$conn);
 $documentsRepo = new Repository('users','id',$conn);
-$mycoursesRepo = new Repository('coursetable','id',$conn);
+$mycoursesRepo = new Repository('courses','id',$conn);
 
 
 

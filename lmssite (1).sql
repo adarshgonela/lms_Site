@@ -96,7 +96,6 @@ CREATE TABLE `paymentstable` (
 -- Table structure for table `profile`
 --
 
-<<<<<<< HEAD:lmssite1.sql
 CREATE TABLE `studentsmaterial` (
   `id` int(11) NOT NULL,
   `name` varchar(30) NOT NULL,
@@ -113,9 +112,6 @@ CREATE TABLE `studentsmaterial` (
 
 CREATE TABLE `tuitor` (
   `id` int(11) NOT NULL,
-=======
-CREATE TABLE `profile` (
->>>>>>> 355220ab0baafa6e5f68ae8d1c6ff36ae84df2f3:lmssite (1).sql
   `name` varchar(50) NOT NULL,
   `contact` int(11) NOT NULL,
   `college` varchar(100) NOT NULL,

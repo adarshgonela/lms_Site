@@ -126,12 +126,13 @@
 										$totallecture =$course['totallectures'];
 										// $completedlecture =$course['completedlectures'];
 										$levels = $course['level'];
+										$imgs=$course['img'];
 									
 							?>
 							<div class="col-sm-6 col-lg-4">
 								<div class="card shadow h-100">
 									<!-- Image -->
-									<img src="https://dev.java/assets/images/java-logo-vert-blk.png" class="card-img-top" alt="course image">
+									<img src="<?php echo $imgs ?>" style="height: 200px;" class="card-img-top" alt="course image">
 									<div class="card-body pb-0">
 										<!-- Badge and favorite -->
 										<div class="d-flex justify-content-between mb-2">

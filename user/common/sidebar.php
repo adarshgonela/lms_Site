@@ -53,9 +53,9 @@ Page Banner START -->
 								</ul>
 							</div>
 							<!-- Button -->
-							<div class="mt-2 mt-sm-0">
-								<a href="user/applications.php" class="btn btn-outline-primary mb-0">View my Applications</a>
-							</div>
+							<!-- <div class="mt-2 mt-sm-0">
+								<a href="user/mycourses.php" class="btn btn-outline-primary mb-0">View All Courses</a>
+							</div> -->
 						</div>
 					</div>
 				</div>

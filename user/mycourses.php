@@ -183,19 +183,19 @@
 										<td>
 											<div class="d-flex align-items-center">
 												<!-- Image -->
-												<!-- <div class="w-100px">
+												<div class="w-100px">
 													<img src="assets/images/courses/4by3/08.jpg" class="rounded" alt=""> 
-												</div>-->
+												</div>
 												<div class="mb-0 ms-2">
 													<!-- Title -->
 													 <h6><a href="#"><?php echo $coursename; ?></a></h6>
 													<!-- Info -->
 													<div class="overflow-hidden">
-														<!-- <h6 class="mb-0 text-end">85%</h6> -->
-														<!-- <div class="progress progress-sm bg-primary bg-opacity-10">
+														<h6 class="mb-0 text-end">85%</h6>
+														<div class="progress progress-sm bg-primary bg-opacity-10">
 															<div class="progress-bar bg-primary aos" role="progressbar" data-aos="slide-right" data-aos-delay="200" data-aos-duration="1000" data-aos-easing="ease-in-out" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
 															</div>
-														</div> -->
+														</div>
 													</div>
 												</div>
 											</div>

@@ -123,7 +123,7 @@
         								<!-- Short by filter -->
         								
         									<select class="form-select js-choice border-0 z-index-9 bg-transparent" aria-label=".form-select-sm" name="type">
-                                            <option value=""> Select Docyment type</option>
+                                            <option value=""> Select Document type</option>
         									<option value="educational">Educational</option>
                                             
         								

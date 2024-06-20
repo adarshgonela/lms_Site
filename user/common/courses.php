@@ -47,7 +47,7 @@
 										<th scope="col" class="border-0">Tutor name</th>
 										<th scope="col" class="border-0">Duration</th>
 										<th scope="col" class="border-0">Total Lectures</th>
-                                        <th scope="col" class="border-0 rounded-end ">  </th>
+                                        <th scope="col" class="border-0 rounded-end ">Action</th>
 
 									</tr>
 								</thead>
@@ -101,7 +101,7 @@
 										</td>
                                         <td>
                                         <div>
-                                            <a href='#' className='text-decoration-none'>
+                                            <a href='user/course-resume.php?id=<?php echo $mycourse['id']; ?>' className='text-decoration-none'>
                                             <button type="button" class="btn btn-success  btn-sm">Continue</button>
                                             </a>
                                             </div>

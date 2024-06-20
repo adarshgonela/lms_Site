@@ -2,7 +2,7 @@
 <!-- =======================
 Page Banner START -->
 <?php
-	$appliedcourses = (int)$mycoursesRepo->aggregate("count","course","`email` = '$email'");
+	$appliedcourses = (int)$mycoursesRepo->aggregate("count","id","`email` = '$email'");
 	//$availablecourses = (int)$collegesRepo->aggregate("count","id","");
 	$acceptedcourses = (int)$mycoursesRepo->aggregate("count","course","`email` = '$email' AND `status`= 'approved'");
 	$totalcourses = (int)$coursesRepo->aggregate("count","id","");
@@ -43,7 +43,7 @@ Page Banner START -->
 										<span class="text-body fw-light">points</span>
 									</li> -->
 									 <li class="list-inline-item me-3 mb-1 mb-sm-0">
-										<!-- <span class="h6"><?php echo $appliedcourses; ?></span> -->
+										<span class="h6"><?php echo $appliedcourses; ?></span>
 										<span class="text-body fw-light"> Courses</span>
 									</li>
 									<li class="list-inline-item me-3 mb-1 mb-sm-0">

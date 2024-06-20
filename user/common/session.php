@@ -18,6 +18,7 @@
     $mycoursesRepo = new Repository('courses','id',$conn);
     $paymentsRepo = new Repository('payments','id',$conn);
     $profileRepo = new Repository('profile','email',$conn);
+    $lecturesRepo = new Repository('lectures','id',$conn);
 
    
 

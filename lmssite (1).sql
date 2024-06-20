@@ -27,20 +27,20 @@ SET time_zone = "+00:00";
 -- Table structure for table `courses`
 --
 
-CREATE TABLE `courses` (
-  `id` int(11) NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `description` varchar(200) NOT NULL,
-  `tid` int(11) NOT NULL,
-  `tname` varchar(50) NOT NULL,
-  `duration` varchar(20) NOT NULL,
-  `price` int(11) NOT NULL,
-  `totallectures` int(11) NOT NULL,
-  `enrolledstudents` int(250) NOT NULL,
-  `level` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+-- CREATE TABLE `courses` (
+--   `id` int(11) NOT NULL,
+--   `name` varchar(50) NOT NULL,
+--   `description` varchar(200) NOT NULL,
+--   `tid` int(11) NOT NULL,
+--   `tname` varchar(50) NOT NULL,
+--   `duration` varchar(20) NOT NULL,
+--   `price` int(11) NOT NULL,
+--   `totallectures` int(11) NOT NULL,
+--   `enrolledstudents` int(250) NOT NULL,
+--   `level` varchar(50) NOT NULL
+-- ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- --------------------------------------------------------
+-- -- --------------------------------------------------------
 
 --
 -- Table structure for table `lectures`
@@ -96,6 +96,7 @@ CREATE TABLE `paymentstable` (
 -- Table structure for table `profile`
 --
 
+<<<<<<< HEAD:lmssite1.sql
 CREATE TABLE `studentsmaterial` (
   `id` int(11) NOT NULL,
   `name` varchar(30) NOT NULL,
@@ -112,6 +113,9 @@ CREATE TABLE `studentsmaterial` (
 
 CREATE TABLE `tuitor` (
   `id` int(11) NOT NULL,
+=======
+CREATE TABLE `profile` (
+>>>>>>> 355220ab0baafa6e5f68ae8d1c6ff36ae84df2f3:lmssite (1).sql
   `name` varchar(50) NOT NULL,
   `contact` int(11) NOT NULL,
   `college` varchar(100) NOT NULL,

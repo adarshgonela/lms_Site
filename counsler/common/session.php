@@ -7,7 +7,7 @@
         header("Location: $return.php?error=Please login to View Page");
         exit();
     }
-    include "../db.php";
+     include "../db.php";
     include_once('redirect/repository.php');
     $current_file = explode(".",basename($_SERVER['PHP_SELF']))[0];
 

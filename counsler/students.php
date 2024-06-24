@@ -107,6 +107,8 @@
 				<?php include 'common/students.php'; ?>
 				<!-- Card END -->
 			</div>
+			
+
 			<!-- Main content END -->
 		</div><!-- Row END -->
 	</div>

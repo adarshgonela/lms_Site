@@ -57,11 +57,7 @@
 											$students = $usersRepo->fetchby("`counsler`='$email' AND `name` LIKE '%$search%'");
 										}
 										else{
-<<<<<<< HEAD
-											$students = $usersRepo->fetchby("`counsler`='$email' AND `role`='Student'");
-=======
 											$students = $usersRepo->fetchby("`counsler`='$email' && `role`='Student'");
->>>>>>> e2d233790dbf0a2d74a5705852d9d258c8c4ed10
 										}
 										
 										foreach($students as $student){

@@ -3,17 +3,10 @@
 Page Banner START -->
 <?php
 	
-<<<<<<< HEAD
-	$students = (int)$usersRepo->aggregate("count","counsler","`counsler`='$email'");
-	$totalAppications = (int)$applicationsRepo->aggregate("count","id","`cid`='$email'");
-	$approvedApplications = (int)$applicationsRepo->aggregate("count","id","`cid`='$email' AND `status`='approved'");
-	$totalColleges = (int)$collegesRepo->aggregate("count","id");
-=======
 	// $students = (int)$usersRepo->aggregate("count","counsler","`counsler`='$email'");
 	// $totalAppications = (int)$applicationsRepo->aggregate("count","id","`counsler`='$email'");
 	// $approvedApplications = (int)$applicationsRepo->aggregate("count","id","`counsler`='$email' AND `status`='approved'");
 	//$totalColleges = (int)$collegesRepo->aggregate("count","id");
->>>>>>> e2d233790dbf0a2d74a5705852d9d258c8c4ed10
 
 
 ?>

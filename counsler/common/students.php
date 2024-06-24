@@ -57,7 +57,7 @@
 											$students = $usersRepo->fetchby("`counsler`='$email' AND `name` LIKE '%$search%'");
 										}
 										else{
-											$students = $usersRepo->fetchby("`counsler`='$email' AND rollno='student'");
+											$students = $usersRepo->fetchby("`counsler`='$email' AND `role`='Student'");
 										}
 										foreach($students as $student){
 											$studentEmail = $student['email'];
@@ -77,7 +77,9 @@
 													<!-- Title -->
 													<div class="progress-bar bg-primary aos" role="progressbar" data-aos="slide-right" data-aos-delay="200" data-aos-duration="1000" data-aos-easing="ease-in-out" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
 													</div>
+													<div class="progress-bar bg-primary aos" role="progressbar" data-aos="slide-right" data-aos-delay="200" data-aos-duration="1000" data-aos-easing="ease-in-out" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
 												</div>
+												<div class="progress-bar bg-primary aos" role="progressbar" data-aos="slide-right" data-aos-delay="200" data-aos-duration="1000" data-aos-easing="ease-in-out" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
 											</div>
 										</td>
 

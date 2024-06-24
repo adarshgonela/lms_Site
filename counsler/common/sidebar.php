@@ -3,10 +3,17 @@
 Page Banner START -->
 <?php
 	
+<<<<<<< HEAD
 	$students = (int)$usersRepo->aggregate("count","counsler","`counsler`='$email'");
 	$totalAppications = (int)$applicationsRepo->aggregate("count","id","`cid`='$email'");
 	$approvedApplications = (int)$applicationsRepo->aggregate("count","id","`cid`='$email' AND `status`='approved'");
 	$totalColleges = (int)$collegesRepo->aggregate("count","id");
+=======
+	// $students = (int)$usersRepo->aggregate("count","counsler","`counsler`='$email'");
+	// $totalAppications = (int)$applicationsRepo->aggregate("count","id","`counsler`='$email'");
+	// $approvedApplications = (int)$applicationsRepo->aggregate("count","id","`counsler`='$email' AND `status`='approved'");
+	//$totalColleges = (int)$collegesRepo->aggregate("count","id");
+>>>>>>> e2d233790dbf0a2d74a5705852d9d258c8c4ed10
 
 
 ?>
@@ -46,15 +53,15 @@ Page Banner START -->
 										<span class="text-body fw-light">points</span>
 									</li> -->
 									<li class="list-inline-item me-3 mb-1 mb-sm-0">
-										<span class="h6"><?php echo $students; ?></span>
+										<!-- <span class="h6"><?php echo $students; ?></span> -->
 										<span class="text-body fw-light"> Students</span>
 									</li>
 									<li class="list-inline-item me-3 mb-1 mb-sm-0">
-										<span class="h6"><?php echo $totalAppications; ?></span>
+										<!-- <span class="h6"><?php echo $totalAppications; ?></span> -->
 										<span class="text-body fw-light">Total Applications</span>
 									</li>
 									<li class="list-inline-item me-3 mb-1 mb-sm-0">
-										<span class="h6"><?php echo $approvedApplications; ?></span>
+										<!-- <span class="h6"><?php echo $approvedApplications; ?></span> -->
 										<span class="text-body fw-light">Approved Applications</span>
 									</li>
 								</ul>

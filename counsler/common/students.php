@@ -57,10 +57,16 @@
 											$students = $usersRepo->fetchby("`counsler`='$email' AND `name` LIKE '%$search%'");
 										}
 										else{
+<<<<<<< HEAD
 											$students = $usersRepo->fetchby("`counsler`='$email' AND `role`='Student'");
+=======
+											$students = $usersRepo->fetchby("`counsler`='$email' && `role`='Student'");
+>>>>>>> e2d233790dbf0a2d74a5705852d9d258c8c4ed10
 										}
+										
 										foreach($students as $student){
 											$studentEmail = $student['email'];
+									
 											$studentName = $student['name'];
 											$mobile = $student['mobile'];
 											$EnrolledDate = $student['date'];
@@ -75,6 +81,19 @@
 												</div>
 												<div class="mb-0 ms-2">
 													<!-- Title -->
+													<h6 class="mb-0"><a href="counsler\student.php?email=<?php echo $studentEmail ?>" class="stretched-link"><?php echo $studentName ?></a></h6>
+													
+													<!-- Address -->
+													<!--span class="text-body small"><i class="fas fa-fw fa-map-marker-alt me-1 mt-1"></i>Mumbai</span --> 
+												</div>
+											</div>
+										</td>
+
+										<!-- Table data -->
+										<td class="text-center text-sm-start">
+											<div class=" overflow-hidden">
+												<h6 class="mb-0">85%</h6>
+												<div class="progress progress-sm bg-primary bg-opacity-10">
 													<div class="progress-bar bg-primary aos" role="progressbar" data-aos="slide-right" data-aos-delay="200" data-aos-duration="1000" data-aos-easing="ease-in-out" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
 													</div>
 													<div class="progress-bar bg-primary aos" role="progressbar" data-aos="slide-right" data-aos-delay="200" data-aos-duration="1000" data-aos-easing="ease-in-out" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">

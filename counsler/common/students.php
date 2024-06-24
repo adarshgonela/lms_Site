@@ -57,7 +57,7 @@
 											$students = $usersRepo->fetchby("`counsler`='$email' AND `name` LIKE '%$search%'");
 										}
 										else{
-											$students = $usersRepo->fetchby("`counsler`='$email'");
+											$students = $usersRepo->fetchby("`counsler`='$email' AND rollno='student'");
 										}
 										foreach($students as $student){
 											$studentEmail = $student['email'];

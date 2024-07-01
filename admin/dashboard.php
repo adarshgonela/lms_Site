@@ -109,8 +109,8 @@
 		<!-- Counter boxes START -->
 		<div class="row g-4 mb-4">
 		    <?php   
-		    $totalpayments = (int)$applicationsRepo->aggregate("sum","fees","");
-		    $totalapplications = (int)$applicationsRepo->aggregate("count","id","");
+		    // $totalpayments = (int)$applicationsRepo->aggregate("sum","fees","");
+		    // $totalapplications = (int)$applicationsRepo->aggregate("count","id","");
 		    $totalStudents = (int)$usersRepo->aggregate("count","id","`role` like 'student'");
 		    $totalCounslers = (int)$usersRepo->aggregate("count","id","`role` like 'counsler'");
 		    ?>

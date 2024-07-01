@@ -92,27 +92,27 @@
 
 <body>
     <?php include 'common/navbar.php';
-    $studentEmail = $_REQUEST['student'];
+     $Email = $_REQUEST['email'];
     
-    $student = $usersRepo->fetch($studentEmail);
-    $studentName = $student['name'];
-    $studentMobile = $student['mobile'];
-    $studentEmail = $student['email'];
-    $studentDate = $student['date'];
+    $student = $usersRepo->fetch($Email);
+    $Name = $student['name'];
+    // $studentMobile = $student['mobile'];
+    // $studentEmail = $student['email'];
+    // $studentDate = $student['date'];
     
-    $studentProfile = $profileRepo->fetch($studentEmail);
-    $dob = $studentProfile ['dob'];
-    $passingYear = $studentProfile ['passingYear'];
-    $college = $studentProfile ['college'];
-    $address = $studentProfile ['address'];
-    $cgpa = $studentProfile ['cgpa'];
+    // $studentProfile = $profileRepo->fetch($studentEmail);
+    // $dob = $studentProfile ['dob'];
+    // $passingYear = $studentProfile ['passingYear'];
+    // $college = $studentProfile ['college'];
+    // $address = $studentProfile ['address'];
+    // $cgpa = $studentProfile ['cgpa'];
     
     
-    $applications = $applicationsRepo->fetchBy("`email`='$studentEmail'");
-    $approved = (int)$applicationsRepo->aggregate("count","id", "`status`='approved' and `email`='$studentEmail'");
+    // $applications = $applicationsRepo->fetchBy("`email`='$studentEmail'");
+    // $approved = (int)$applicationsRepo->aggregate("count","id", "`status`='approved' and `email`='$studentEmail'");
     
     $totalstudents = 0;
-    $totalApps = count($applications);
+   // $totalApps = count($applications);
     ?>
 
 	<!-- Top bar END -->
@@ -142,7 +142,7 @@
 					<div class="card-body">
 						<!-- Profile picture -->
 						<div class="avatar avatar-xl mb-3">
-							<img class="avatar-img rounded-circle border border-white border-3 shadow" src="assets/images/avatar/07.jpg" alt="">
+							<img class="avatar-img rounded-circle border border-white border-3 shadow" src="https://content.api.news/v3/images/bin/8a3b2dac8172f23b7306cca7ed34c3a3" alt="">
 						</div>
 
 						<!-- Information START -->
@@ -154,28 +154,28 @@
 
 									<li class="list-group-item">
 										<span>Full Name:</span>
-										<span class="h6 mb-0"><?php echo $studentName ?></span>
+										<span class="h6 mb-0"><?php echo $Name ?></span>
 									</li>
 
 									<li class="list-group-item">
 										<span>Mobile Number:</span>
-										<span class="h6 mb-0"><?php echo $studentMobile ?></span>
+										<!-- <span class="h6 mb-0"><?php echo $studentMobile ?></span> -->
 									</li>
 									
 									<li class="list-group-item">
 										<span>College :</span>
-										<span class="h6 mb-0"><?php echo $college ?></span>
+										<!-- <span class="h6 mb-0"><?php echo $college ?></span> -->
 									</li>
 									
 									<li class="list-group-item">
-										<span>Address :</span>
-										<span class="h6 mb-0"><?php echo $address ?></span>
+										<!-- <span>Address :</span>
+										<span class="h6 mb-0"><?php echo $address ?></span> -->
 									</li>
 									
-									<li class="list-group-item">
-										<span>CGPA :</span>
-										<span class="h6 mb-0"><?php echo $cgpa ?></span>
-									</li>
+									<!-- <li class="list-group-item">
+										<span>CGPA :</span> -->
+										<!-- <span class="h6 mb-0"><?php echo $cgpa ?></span> -->
+									<!-- </li> -->
 								</ul>
 							</div>
 
@@ -184,15 +184,15 @@
 								<ul class="list-group list-group-borderless">
 									<li class="list-group-item">
 										<span>Email ID:</span>
-										<span class="h6 mb-0"><?php echo $studentEmail ?></span>
+										<span class="h6 mb-0"><?php echo $Email ?></span>
 									</li>
 
 									<li class="list-group-item">
 										<span>Joining Date:</span>
-										<span class="h6 mb-0"><?php echo $studentDate ?></span>
+										<!-- <span class="h6 mb-0"><?php echo $studentDate ?></span> -->
 									</li>
 									
-									<li class="list-group-item">
+									<!-- <li class="list-group-item">
 										<span>Date of Birth:</span>
 										<span class="h6 mb-0"><?php echo $dob ?></span>
 									</li>
@@ -200,7 +200,7 @@
 									<li class="list-group-item">
 										<span>Passing Year:</span>
 										<span class="h6 mb-0"><?php echo $passingYear ?></span>
-									</li>
+									</li> -->
 								</ul>
 							</div>
 						</div>
@@ -225,7 +225,7 @@
 							<!-- Card body -->
 							<div class="card-body p-0">
 								<div class="d-sm-flex justify-content-between p-4">
-									<h4 class="text-blue mb-0"><?php echo $approved; ?></h4>
+									<!-- <h4 class="text-blue mb-0"><?php echo $approved; ?></h4> -->
 									<p class="mb-0"><span class="text-success me-1">0.20%<i class="bi bi-arrow-up"></i></span>vs last Week</p>
 								</div>
 								<!-- Apex chart -->
@@ -245,7 +245,7 @@
 							<!-- Card body -->
 							<div class="card-body p-0">
 								<div class="d-sm-flex justify-content-between p-4">
-									<h4 class="text-blue mb-0"><?php echo $totalApps; ?></h4>
+									<!-- <h4 class="text-blue mb-0"><?php echo $totalApps; ?></h4> -->
 									<p class="mb-0"><span class="text-success me-1">0.35%<i class="bi bi-arrow-up"></i></span>vs last Week</p>
 								</div>
 								<!-- Apex chart -->

@@ -35,19 +35,23 @@ $current_file = explode(".",basename($_SERVER['PHP_SELF']))[0];
 
 
                 <!-- Menu item 4 -->
+<<<<<<< HEAD
 				<li class="nav-item"> <a class="nav-link <?php echo $current_file=='applications'? 'active' :'' ;?>" href="admin/applications.php"><i class="fas fa-file fa-fw me-2"></i>Applications</a></li>
 				
 				<!-- Menu item 4 -->
 				<li class="nav-item"> <a class="nav-link <?php echo $current_file=='universities'? 'active' :'' ;?>" href="admin/universities.php"><i class="fas fa-university fa-fw me-2"></i>Universities</a></li>
+=======
+				<!-- <li class="nav-item"> <a class="nav-link <?php echo $current_file=='applications'? 'active' :'' ;?>" href="admin/applications.php"><i class="fas fa-file fa-fw me-2"></i>Applications</a></li>
+>>>>>>> 6b9443c826dfb26d31527ce85d61da1487457e8c
 
 				<!-- Menu item 5 -->
-				<li class="nav-item"> <a class="nav-link <?php echo $current_file=='reviews'? 'active' :'' ;?>" href="admin/reviews.php"><i class="far fa-comment-dots fa-fw me-2"></i>Reviews</a></li>
-				
+				<!-- <li class="nav-item"> <a class="nav-link <?php echo $current_file=='reviews'? 'active' :'' ;?>" href="admin/reviews.php"><i class="far fa-comment-dots fa-fw me-2"></i>Reviews</a></li>
+				  -->
 				<!-- Menu item 6 -->
 				
 
 				<!-- Menu item 7 -->
-				<li class="nav-item"> <a class="nav-link <?php echo $current_file=='earnings'? 'active' :'' ;?>" href="admin/earnings.php"><i class="far fa-chart-bar fa-fw me-2"></i>Earnings</a></li>
+				<!-- <li class="nav-item"> <a class="nav-link <?php echo $current_file=='earnings'? 'active' :'' ;?>" href="admin/earnings.php"><i class="far fa-chart-bar fa-fw me-2"></i>Earnings</a></li> -->
 
 				<!-- Menu item 8 -->
 				<li class="nav-item"> <a class="nav-link <?php echo $current_file=='settings'? 'active' :'' ;?>" href="admin/settings.php"><i class="fas fa-user-cog fa-fw me-2"></i>Admin Settings</a></li>

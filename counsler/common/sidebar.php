@@ -46,15 +46,15 @@ Page Banner START -->
 										<span class="text-body fw-light">points</span>
 									</li> -->
 									<li class="list-inline-item me-3 mb-1 mb-sm-0">
-										<!-- <span class="h6"><?php echo $students; ?></span> -->
+										<?php echo $students; ?></span> 
 										<span class="text-body fw-light"> Students</span>
 									</li>
 									<li class="list-inline-item me-3 mb-1 mb-sm-0">
-										<!-- <span class="h6"><?php echo $totalAppications; ?></span> -->
+										<?php echo $totalAppications; ?></span> 
 										<span class="text-body fw-light">Total Applications</span>
 									</li>
 									<li class="list-inline-item me-3 mb-1 mb-sm-0">
-										<!-- <span class="h6"><?php echo $approvedApplications; ?></span> -->
+										<?php echo $approvedApplications; ?></span> 
 										<span class="text-body fw-light">Approved Applications</span>
 									</li>
 								</ul>

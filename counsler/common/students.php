@@ -78,11 +78,16 @@
 												<div class="mb-0 ms-2">
 													<!-- Title -->
 <<<<<<< HEAD
+<<<<<<< HEAD
 													<h6 class="mb-0"><a href="counsler/applications.php?student=<?php echo $studentEmail ?>" class="stretched-link"><?php echo $studentName ?></a></h6>
 =======
 													<h6 class="mb-0"><a href="counsler\student.php?email=<?php echo $studentEmail ?>" class="stretched-link"><?php echo $studentName ?></a></h6>
 													
 >>>>>>> 6b9443c826dfb26d31527ce85d61da1487457e8c
+=======
+													<h6 class="mb-0"><a href="counsler\student.php?email=<?php echo $studentEmail ?>" class="stretched-link"><?php echo $studentName ?></a></h6>
+													
+>>>>>>> 91292d97fdfee8170aea5c105e7fdb0e698ea0c4
 													<!-- Address -->
 													<!--span class="text-body small"><i class="fas fa-fw fa-map-marker-alt me-1 mt-1"></i>Mumbai</span --> 
 												</div>

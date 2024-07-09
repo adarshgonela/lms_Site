@@ -416,6 +416,9 @@
                                     <option value="">Select Status</option>
 									<?php
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 91292d97fdfee8170aea5c105e7fdb0e698ea0c4
 										$selected = isset($_REQUEST['status']) ? $_REQUEST['status'] : '';
 										foreach($appStatusList as $appstatus){
 											$isSelected = ($selected == $appstatus) ? 'selected' : '';
@@ -460,6 +463,7 @@
 							<button class="col-md-12 btn btn-purple" type="submit">search</button>
 							</div>
 
+<<<<<<< HEAD
 =======
 										}
                                             if(count($applications)==0){
@@ -471,6 +475,8 @@
 								<!-- Table body END -->
 							</table>
 >>>>>>> 6b9443c826dfb26d31527ce85d61da1487457e8c
+=======
+>>>>>>> 91292d97fdfee8170aea5c105e7fdb0e698ea0c4
 						</div>
 						</form>
 						

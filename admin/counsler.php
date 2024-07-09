@@ -415,6 +415,7 @@
 									<select class="form-select js-choice border-0 z-index-9 bg-transparent" aria-label=".form-select-sm" name="status">
                                     <option value="">Select Status</option>
 									<?php
+<<<<<<< HEAD
 										$selected = isset($_REQUEST['status']) ? $_REQUEST['status'] : '';
 										foreach($appStatusList as $appstatus){
 											$isSelected = ($selected == $appstatus) ? 'selected' : '';
@@ -459,6 +460,17 @@
 							<button class="col-md-12 btn btn-purple" type="submit">search</button>
 							</div>
 
+=======
+										}
+                                            if(count($applications)==0){
+									            echo "<tr><td colspan='5' class='text-center'>No data found</td></tr>";
+									        }
+									?>
+									
+								</tbody>
+								<!-- Table body END -->
+							</table>
+>>>>>>> 6b9443c826dfb26d31527ce85d61da1487457e8c
 						</div>
 						</form>
 						

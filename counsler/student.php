@@ -109,8 +109,8 @@ if(isset($_REQUEST['email'])){
 }
 else{
 	//back to students
-	header("Location:counsler/student.php");
-	exit();
+	// header("Location:counsler/student.php");
+	// exit();
 }
 //2 get user details
 //3 fill data
@@ -208,7 +208,7 @@ Main part START -->
 						</div>
                     </div>
 					<div class="col-12">
-						<div class="row g-xl-0 align-items-center">
+						<div class="row g-xl-0 align-items-center">														
 							<div class="col-lg-4">
 								<h6 class="mb-lg-0">Graduation Board <span class="text-danger">*</span></h6>
 							</div>

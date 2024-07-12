@@ -126,7 +126,7 @@
                                             <option value=""> Select Document type</option>
         									<option value="educational">Educational</option>
                                             
-        								
+
         									</select>
         						</div>
         							

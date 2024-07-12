@@ -25,6 +25,7 @@ Page Banner START -->
 							<a class="avatar avatar-xxl position-relative mt-n3" href="counsler/profile.php">
 								<img class="avatar-img rounded-circle border border-white border-3 shadow" loading="lazy" src="
 								<?php
+								
 								if($profile['image'] && $profile['image']!=""){
 								    echo "data:image/jpeg;base64,".base64_encode($profile['image']);
 								}
@@ -39,6 +40,7 @@ Page Banner START -->
 						<!-- Profile info -->
 						<div class="col d-sm-flex justify-content-between align-items-center">
 							<div>
+								
 								<h1 class="my-1 fs-4"><?php echo $user['name']; ?></h1>
 								<ul class="list-inline mb-0">
 									<!-- <li class="list-inline-item me-3 mb-1 mb-sm-0">

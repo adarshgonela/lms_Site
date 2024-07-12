@@ -174,10 +174,15 @@
                             	$studentName = $student['name'];
                              	$studentMobile = $student['mobile'];
                              	$studentcounsler = $student['counsler'];
+<<<<<<< HEAD
                                 $totalApps = (int)$applicationsRepo->aggregate("count","id","`sid`='$studentEmail'");
                                 $totalpayments = (int)$applicationsRepo->aggregate("sum","fees","`sid`='$studentEmail'");
+=======
+                                // $totalApps = (int)$applicationsRepo->aggregate("count","id","`email`='$studentEmail'");
+                                // $totalpayments = (int)$applicationsRepo->aggregate("sum","fees","`email`='$studentEmail'");
+>>>>>>> 6b9443c826dfb26d31527ce85d61da1487457e8c
 
-                             	$EnrolledDate = $student['date'];
+                             	 $EnrolledDate = $student['date'];
                             	
                             ?>
 
@@ -225,9 +230,9 @@
 										<div class="d-flex justify-content-between align-items-center mb-3">
 											<div class="d-flex align-items-center">
 												<div class="icon-md bg-purple bg-opacity-10 text-purple rounded-circle flex-shrink-0"><i class="fas fa-book fa-fw"></i></div>
-												<h6 class="mb-0 ms-2 fw-light">Total Applications</h6>
+												<!-- <h6 class="mb-0 ms-2 fw-light">Total Applications</h6> -->
 											</div>
-											<span class="mb-0 fw-bold"><?php echo $totalApps ?></span>
+											<span class="mb-0 fw-bold">$totalApps </span>
 										</div>
 										
 										<div class="d-flex justify-content-between align-items-center mb-3">
@@ -235,7 +240,7 @@
 												<div class="icon-md bg-success bg-opacity-10 text-success rounded-circle flex-shrink-0"><i class="bi bi-currency-dollar fa-fw"></i></div>
 												<h6 class="mb-0 ms-2 fw-light">Payments</h6>
 											</div>
-											<span class="mb-0 fw-bold"><?php echo $totalpayments ?></span>
+											<!-- <span class="mb-0 fw-bold"><?php echo $totalpayments ?></span> -->
 										</div>
 
 										

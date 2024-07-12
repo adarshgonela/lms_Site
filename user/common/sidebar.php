@@ -2,7 +2,7 @@
 <!-- =======================
 Page Banner START -->
 <?php
-	$appliedcourses = (int)$mycoursesRepo->aggregate("count","course","`email` = '$email'");
+	$appliedcourses = (int)$mycoursesRepo->aggregate("count","id","`email` = '$email'");
 	//$availablecourses = (int)$collegesRepo->aggregate("count","id","");
 	$acceptedcourses = (int)$mycoursesRepo->aggregate("count","course","`email` = '$email' AND `status`= 'approved'");
 	$totalcourses = (int)$coursesRepo->aggregate("count","id","");

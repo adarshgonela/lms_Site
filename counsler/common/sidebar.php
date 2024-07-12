@@ -48,15 +48,15 @@ Page Banner START -->
 										<span class="text-body fw-light">points</span>
 									</li> -->
 									<li class="list-inline-item me-3 mb-1 mb-sm-0">
-										<span class="h6"><?php echo $students; ?></span>
+										<?php echo $students; ?></span> 
 										<span class="text-body fw-light"> Students</span>
 									</li>
 									<li class="list-inline-item me-3 mb-1 mb-sm-0">
-										<span class="h6"><?php echo $totalAppications; ?></span>
+										<?php echo $totalAppications; ?></span> 
 										<span class="text-body fw-light">Total Applications</span>
 									</li>
 									<li class="list-inline-item me-3 mb-1 mb-sm-0">
-										<span class="h6"><?php echo $approvedApplications; ?></span>
+										<?php echo $approvedApplications; ?></span> 
 										<span class="text-body fw-light">Approved Applications</span>
 									</li>
 								</ul>
@@ -110,9 +110,9 @@ Page content START -->
 							<div class="list-group list-group-dark list-group-borderless collapse-list">
 								<a class="list-group-item <?php echo $current_file=='dashboard'? 'active' :'' ;?>" href="counsler/dashboard.php"><i class="bi bi-ui-checks-grid fa-fw me-2"></i>Dashboard</a>
 								<a class="list-group-item <?php echo $current_file=='students'? 'active' :'' ;?>" href="counsler/students.php"><i class="bi bi-people fa-fw me-2"></i>Students</a>
-								<a class="list-group-item <?php echo $current_file=='applications'? 'active' :'' ;?>" href="counsler/applications.php"><i class="bi bi-files fa-fw me-2"></i>Applications</a>
-								<!--<a class="list-group-item" href="counsler/courses.php"><i class="bi bi-cart-check fa-fw me-2"></i>Courses</a>-->
-								<a class="list-group-item <?php echo $current_file=='colleges'? 'active' :'' ;?>" href="counsler/colleges.php"><i class="fas fa-university fa-fw me-2"></i>Universities</a>
+								<!-- <a class="list-group-item <?php echo $current_file=='applications'? 'active' :'' ;?>" href="counsler/applications.php"><i class="bi bi-files fa-fw me-2"></i>Applications</a>
+								<a class="list-group-item" href="counsler/courses.php"><i class="bi bi-cart-check fa-fw me-2"></i>Courses</a>-->
+								<!-- <a class="list-group-item <?php echo $current_file=='colleges'? 'active' :'' ;?>" href="counsler/colleges.php"><i class="fas fa-university fa-fw me-2"></i>Universities</a> --> 
 								<a class="list-group-item <?php echo $current_file=='payments'? 'active' :'' ;?>" href="counsler/payments.php"><i class="bi bi-wallet2 fa-fw me-2"></i>Payments</a>
 								<a class="list-group-item <?php echo $current_file=='documents'? 'active' :'' ;?>" href="counsler/documents.php"><i class="bi bi-file-earmark-text-fill me-2"></i>Documents</a>
 								<!-- <a class="list-group-item" href="student-quiz.html"><i class="bi bi-question-diamond fa-fw me-2"></i>Quiz</a> -->

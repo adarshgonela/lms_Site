@@ -57,10 +57,12 @@
 											$students = $usersRepo->fetchby("`counsler`='$email' AND `name` LIKE '%$search%'");
 										}
 										else{
-											$students = $usersRepo->fetchby("`counsler`='$email'");
+											$students = $usersRepo->fetchby("`counsler`='$email' && `role`='Student'");
 										}
+										
 										foreach($students as $student){
 											$studentEmail = $student['email'];
+									
 											$studentName = $student['name'];
 											$mobile = $student['mobile'];
 											$EnrolledDate = $student['date'];
@@ -75,7 +77,8 @@
 												</div>
 												<div class="mb-0 ms-2">
 													<!-- Title -->
-													<h6 class="mb-0"><a href="counsler/applications.php?student=<?php echo $studentEmail ?>" class="stretched-link"><?php echo $studentName ?></a></h6>
+													<h6 class="mb-0"><a href="counsler\student.php?email=<?php echo $studentEmail ?>" class="stretched-link"><?php echo $studentName ?></a></h6>
+													
 													<!-- Address -->
 													<!--span class="text-body small"><i class="fas fa-fw fa-map-marker-alt me-1 mt-1"></i>Mumbai</span --> 
 												</div>
